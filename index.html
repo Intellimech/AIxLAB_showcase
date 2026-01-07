@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Showcase Laboratorio AI</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <img src="img/LogoIMECH.png" alt="Intellimech Logo" class="header-logo">
+
+                <div class="divider"></div>
+
+                <img src="img/LogoAIxLAB.png" alt="AI Lab Logo" class="header-logo">
+            </div>
+
+            <div class="header-text">
+                <h2 class="lab-label">Laboratorio di Intelligenza Artificiale</h2>
+
+                <p class="mission-statement">
+                    Esplora i nostri progetti di Intelligenza Artificiale<br>
+                    declinati in tre filoni strategici:
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-shortcuts">
+
+        <img src="img/LogoIMECH.png" alt="Intellimech" class="nav-logo left-logo">
+
+        <div class="nav-buttons-container">
+            <a href="#industrial" class="shortcut-card active">
+                <span class="shortcut-icon">🏭</span>
+                Applicazioni Industriali
+            </a>
+            <a href="#knowledge" class="shortcut-card">
+                <span class="shortcut-icon">🧠</span>
+                Gestione della Conoscenza
+            </a>
+            <a href="#tutorial" class="shortcut-card">
+                <span class="shortcut-icon">🎓</span>
+                Tutorial e Formazione
+            </a>
+        </div>
+
+        <img src="img/LogoAIxLAB.png" alt="AI Lab" class="nav-logo right-logo">
+
+    </nav>
+
+    <section id="industrial" class="category-section">
+        <h2 class="category-title">🏭 Applicazioni Industriali</h2>
+        <div class="scroll-container">
+
+            <div class="card">
+                <div class="card-media">
+                    <div class="placeholder-media">GIF PROGETTO</div>
+                </div>
+                <div class="card-body">
+                    <h3>Visual Inspection</h3>
+                    <div class="labels">
+                        <span class="tag domain">Computer Vision</span>
+                        <span class="tag lib">YOLOv8</span>
+                        <span class="tag tech">Python</span>
+                    </div>
+                    <p class="summary">Rilevamento automatico difetti su catena di montaggio.</p>
+                    <a href="progetti\Applicazioni_Industriali\Visione\readme.html" class="btn-action">Approfondisci</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-media">
+                    <div class="placeholder-media" style="background:#444">GIF 2</div>
+                </div>
+                <div class="card-body">
+                    <h3>Predictive Maint.</h3>
+                    <div class="labels">
+                        <span class="tag domain">Time Series Forecasting</span>
+                        <span class="tag lib">Scikit learn</span>
+                        <span class="tag tech">Python</span>
+                    </div>
+                    <p class="summary">Prevedere guasti ai macchinari tramite sensori.</p>
+                    <a href="#" class="btn-action">Approfondisci</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="knowledge" class="category-section">
+        <h2 class="category-title">🧠 Gestione della Conoscenza</h2>
+        <div class="scroll-container">
+
+            <div class="card">
+                <div class="card-media">
+                    <div class="placeholder-media" style="background:#00695c">GIF RAG</div>
+                </div>
+                <div class="card-body">
+                    <h3>Document Chatbot</h3>
+                    <div class="labels">
+                        <span class="tag domain">NLP</span>
+                        <span class="tag lib">LangChain</span>
+                        <span class="tag lib">OpenAI</span>
+                        <span class="tag type">RAG</span>
+                        <span class="tag tech">Python</span>
+                    </div>
+                    <p class="summary">Chatta con i PDF tecnici dell'azienda.</p>
+                    <a href="#" class="btn-action">Approfondisci</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="tutorial" class="category-section">
+        <h2 class="category-title">🎓 Tutorial e Formazione</h2>
+        <div class="scroll-container">
+
+            <div class="card">
+                <div class="card-media">
+                    <div class="placeholder-media" style="background:#f57f17">TUTORIAL</div>
+                </div>
+                <div class="card-body">
+                    <h3>Python per AI</h3>
+                    <div class="labels">
+                        <span class="tag domain">Tutorial</span>
+                        <span class="tag tech">Python</span>
+                        <span class="tag type">Beginner</span>
+                    </div>
+                    <p class="summary">Corso base per iniziare a manipolare i dati.</p>
+                    <a href="#" class="btn-action">Approfondisci</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </a>
+
+    <script src="scripts/script_barra_nav.js"></script>
+
+</body>
+
+</html>

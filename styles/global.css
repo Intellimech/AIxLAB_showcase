@@ -1,0 +1,433 @@
+/* =========================================
+   PALETTE COLORI (Ispirata a Intellimech)
+   ========================================= */
+:root {
+    --primary-blue: #004883;     /* Blu scuro istituzionale */
+    --primary-hover: #003366;    /* Blu ancora più scuro per i click */
+    --accent-light: #e6f0fa;     /* Azzurrino per sfondi leggeri */
+    --bg-color: #f4f6f8;         /* Grigio chiarissimo di sfondo */
+    --card-bg: #ffffff;          /* Bianco puro per le card */
+    --text-main: #333333;        /* Testo principale */
+    --text-muted: #666666;       /* Testo secondario */
+}
+
+/* =========================================
+   RESET E BASE
+   ========================================= */
+body {
+    font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding-bottom: 60px;
+}
+
+/* =========================================
+   HEADER CON LOGHI
+   ========================================= */
+.main-header {
+    background-color: var(--card-bg);
+    border-bottom: 4px solid var(--primary-blue);
+    padding: 20px 0; /* Meno padding laterale, gestiamo col content */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column; /* Loghi sopra, testo sotto */
+    align-items: center;    /* Tutto centrato orizzontalmente */
+    justify-content: center;
+    gap: 15px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Spazio tra i due loghi */
+}
+
+/* Gestione dimensione Loghi */
+.header-logo {
+    height: 60px; /* Altezza fissa, la larghezza si adatta in proporzione */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Linea verticale tra i loghi */
+.divider {
+    height: 40px;
+    width: 2px;
+    background-color: #e0e0e0;
+}
+
+.header-text {
+    text-align: center;
+    margin-top: 10px; /* Un po' di spazio dai loghi */
+    margin-bottom: 10px;
+}
+
+/* Stile "Etichetta Tecnica" */
+.lab-label {
+    font-size: 1rem;      /* Piccolo */
+    text-transform: uppercase; /* Tutto maiuscolo */
+    letter-spacing: 2px;     /* Lettere spaziate: molto elegante */
+    color: var(--text-muted);
+    font-weight: 700;        /* Grassetto */
+    margin: 0 0 10px 0;      /* Spazio sotto */
+    opacity: 0.8;
+}
+
+/* Stile "Frase Principale" */
+.mission-statement {
+    font-size: 1.25rem;      /* Più grande, si legge bene */
+    color: var(--primary-blue); /* Blu aziendale o grigio scuro (#333) */
+    font-weight: 400;        /* Regular, non grassetto */
+    line-height: 1.5;        /* Respiro tra le righe */
+    margin: 0;
+    max-width: 700px;        /* Evita che su schermi larghi si allunghi troppo */
+    margin-left: auto;       /* Centra il blocco */
+    margin-right: auto;
+}
+
+
+/* =========================================
+   SEZIONI CATEGORIE
+   ========================================= */
+.category-section {
+    padding: 30px 40px 10px 40px;
+}
+
+.category-title {
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 5px solid #d32f2f; /* Un tocco di rosso (come nel logo Intellimech o simili) per stacco */
+    font-weight: 600;
+}
+
+
+
+
+/* =========================================
+   SMOOTH SCROLLING GLOBALE
+   ========================================= */
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+/* =========================================
+   BARRA DI NAVIGAZIONE CATEGORIE (SHORTCUTS)
+   ========================================= */
+.nav-shortcuts {
+    display: flex;
+    justify-content: space-between; /* Spinge i loghi ai lati */
+    align-items: center;
+    padding: 10px 30px; /* Un po' più spazio ai lati */
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    background-color: rgba(244, 246, 248, 0.98); 
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    
+    height: 70px; /* Altezza fissa per evitare scatti */
+    transition: all 0.3s ease;
+}
+
+/* Contenitore per tenere i bottoni al centro */
+.nav-buttons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-grow: 1; /* Occupa tutto lo spazio centrale disponibile */
+}
+
+/* Stile dei Mini-Loghi nella barra */
+.nav-logo {
+    height: 40px;
+    width: auto;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effetto rimbalzo elastico */
+}
+
+/* Posizioni di partenza (fuori schermo o nascosti) */
+.left-logo {
+    transform: translateX(-50px); /* Parte spostato a sinistra */
+}
+
+.right-logo {
+    transform: translateX(50px); /* Parte spostato a destra */
+}
+
+/* Quando la barra ha la classe "show-logos" */
+.nav-shortcuts.show-logos .nav-logo {
+    opacity: 1;
+    transform: translateX(0); /* Scivolano al loro posto originale */
+}
+
+/* --- Resto dei bottoni (shortcut-card) invariato o quasi --- */
+.shortcut-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 8px 20px; /* Leggermente più compatti */
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Impedisce al testo di andare a capo */
+}
+
+.shortcut-card:hover {
+    color: var(--primary-blue);
+    background-color: #fff;
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.shortcut-card.active {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 10px rgba(0, 84, 150, 0.3);
+}
+
+section {
+    scroll-margin-top: 140px; /* Aumentato un po' per sicurezza */
+}
+
+.shortcut-icon {
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+/* =========================================
+   SCROLL CONTAINER (LA VETRINA)
+   ========================================= */
+
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 25px;
+    padding: 10px 5px 30px 5px; /* Spazio sotto per l'ombra hover */
+    scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizzata sottile e grigia */
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+.scroll-container::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 4px;
+}
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #9e9e9e;
+}
+
+/* =========================================
+   CARD DESIGN
+   ========================================= */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid #e0e0e0; /* Bordo sottile elegante */
+    border-radius: 8px;
+    min-width: 280px;
+    max-width: 280px;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-color: var(--primary-blue); /* Al passaggio diventa blu */
+}
+
+/* Area Media */
+.card-media {
+    height: 150px;
+    background-color: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+}
+
+.placeholder-media {
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Corpo Card */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-body h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* Etichette / Labels */
+.labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+
+
+
+/* =========================================
+   ETICHETTE COLORATE (TAGS)
+   ========================================= */
+
+/* Stile Base (condiviso da tutte le etichette) */
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid transparent; /* Predisponiamo il bordo */
+    display: inline-block;
+}
+
+/* 🔵 TECH (Linguaggi, Sistemi) - Blu Tecnico */
+.tag.tech {
+    background-color: #e3f2fd;
+    color: #0277bd;
+    border-color: #b3e5fc;
+}
+
+/* 🟢 DOMAIN (Campi di applicazione AI) - Verde Scienza */
+.tag.domain {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+}
+
+/* 🟣 LIB (Librerie, Framework) - Viola Strumenti */
+.tag.lib {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    border-color: #e1bee7;
+}
+
+/* 🟠 TYPE (Tipo progetto, Difficoltà) - Arancione Info */
+.tag.type {
+    background-color: #fff3e0;
+    color: #ef6c00;
+    border-color: #ffe0b2;
+}
+
+/* ⚫ DEFAULT (Se ti dimentichi la classe specifica) */
+.tag.gray {
+    background-color: #f5f5f5;
+    color: #616161;
+    border-color: #e0e0e0;
+}
+
+/* Colore diverso per tag importanti se vuoi
+.tag.ai { background-color: #e3f2fd; color: #1565c0; border-color: #bbdefb; } 
+*/
+
+.summary {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Spinge il bottone in basso se il testo è corto */
+}
+
+/* Bottone */
+.btn-action {
+    display: block;
+    text-align: center;
+    background-color: var(--card-bg);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+
+
+
+/* =========================================
+   TASTO "TORNA SU"
+   ========================================= */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 50%; /* Cerchio perfetto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 2000; /* Sopra a tutto, anche alla navbar */
+    
+    /* Stato iniziale: Nascosto */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px); /* Parte un po' più giù */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-5px); /* Sale un pochino al mouseover */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+/* Quando diventa visibile (aggiunto via JS) */
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}

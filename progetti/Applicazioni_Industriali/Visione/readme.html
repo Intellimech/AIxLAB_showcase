@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Progetto - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Indietro
+        </a>
+
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo"> 
+            <div class="mini-divider"></div>
+            <img src="../../../img/LogoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                <span class="tag domain">Computer Vision</span>
+                <span class="tag lib">YOLOv8</span>
+                <span class="tag type">PoC</span>
+            </div>
+            
+            <h1 class="project-title">Sistema di Rilevamento Difetti</h1>
+            <p class="subtitle">Analisi automatica della qualità superficiale tramite Deep Learning.</p>
+        </header>
+
+        <div class="project-hero-media">
+            <div style="color:white; font-weight:bold;">VIDEO DIMOSTRATIVO QUI</div>
+        </div>
+
+        <article class="project-content">
+            <h2>Il Problema</h2>
+            <p>
+                Il controllo qualità manuale richiede tempo ed è soggetto ad errori umani. 
+                In questo progetto abbiamo voluto dimostrare come l'AI possa automatizzare il processo.
+            </p>
+
+            <h2>La Soluzione</h2>
+            <p>
+                Abbiamo utilizzato una rete neurale <strong>YOLOv8</strong> addestrata su un dataset di 500 immagini di componenti metallici.
+                Il sistema è in grado di identificare:
+            </p>
+            <ul>
+                <li>Graffi superficiali (> 0.5mm)</li>
+                <li>Ammaccature</li>
+                <li>Difetti di verniciatura</li>
+            </ul>
+
+            <h2>Risultati</h2>
+            <p>
+                Il Proof of Concept ha raggiunto un'accuratezza del <strong>94%</strong> nel set di test, con un tempo di inferenza di soli 20ms per immagine.
+            </p>
+
+            <div class="code-box">
+                <p>Ti interessa vedere come funziona "sotto il cofano"?</p>
+                <a href="src/" class="btn-code">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Esplora il Codice Sorgente
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+</body>
+</html>
