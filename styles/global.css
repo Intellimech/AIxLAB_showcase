@@ -1,280 +1,270 @@
 /* =========================================
-   PALETTE COLORI (Ispirata a Intellimech)
+   1. VARIABILI E RESET (Base)
    ========================================= */
 :root {
-    --primary-blue: #004883;     /* Blu scuro istituzionale */
-    --primary-hover: #003366;    /* Blu ancora più scuro per i click */
-    --accent-light: #e6f0fa;     /* Azzurrino per sfondi leggeri */
-    --bg-color: #f4f6f8;         /* Grigio chiarissimo di sfondo */
-    --card-bg: #ffffff;          /* Bianco puro per le card */
-    --text-main: #333333;        /* Testo principale */
-    --text-muted: #666666;       /* Testo secondario */
+    --primary-blue: #004883;     
+    --primary-light: #005496;    
+    --accent-bg: #f4f6f8;        
+    --text-main: #333333;        
+    --text-muted: #666666;       
+    --white: #ffffff;
+    --border-color: #e0e0e0;
 }
 
-/* =========================================
-   RESET E BASE
-   ========================================= */
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
-    font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
     margin: 0;
-    padding-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+body.locked {
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* =========================================
-   HEADER CON LOGHI
+   2. LANDING SCREEN (COPERTINA)
    ========================================= */
-.main-header {
-    background-color: var(--card-bg);
-    border-bottom: 4px solid var(--primary-blue);
-    padding: 20px 0; /* Meno padding laterale, gestiamo col content */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.header-content {
+#landing-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--white);
+    z-index: 9999;
     display: flex;
-    flex-direction: column; /* Loghi sopra, testo sotto */
-    align-items: center;    /* Tutto centrato orizzontalmente */
     justify-content: center;
-    gap: 15px;
-}
-
-.logo-wrapper {
-    display: flex;
     align-items: center;
-    gap: 20px; /* Spazio tra i due loghi */
+    transition: opacity 0.5s ease-out, visibility 0.5s;
 }
 
-/* Gestione dimensione Loghi */
-.header-logo {
-    height: 60px; /* Altezza fissa, la larghezza si adatta in proporzione */
+#landing-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.landing-content {
+    text-align: center;
+    max-width: 1000px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* LOGHI GRANDI (Solo per la Landing) */
+.landing-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.big-logo {
+    height: 80px; 
     width: auto;
     object-fit: contain;
 }
 
-/* Linea verticale tra i loghi */
-.divider {
-    height: 40px;
-    width: 2px;
-    background-color: #e0e0e0;
+.vertical-line {
+    width: 2px; height: 60px; background-color: #ccc;
 }
 
-.header-text {
-    text-align: center;
-    margin-top: 10px; /* Un po' di spazio dai loghi */
-    margin-bottom: 10px;
-}
+/* TESTI LANDING */
+.landing-texts { display: flex; flex-direction: column; gap: 15px; }
 
-/* Stile "Etichetta Tecnica" */
-.lab-label {
-    font-size: 1rem;      /* Piccolo */
-    text-transform: uppercase; /* Tutto maiuscolo */
-    letter-spacing: 2px;     /* Lettere spaziate: molto elegante */
-    color: var(--text-muted);
-    font-weight: 700;        /* Grassetto */
-    margin: 0 0 10px 0;      /* Spazio sotto */
-    opacity: 0.8;
-}
-
-/* Stile "Frase Principale" */
-.mission-statement {
-    font-size: 1.25rem;      /* Più grande, si legge bene */
-    color: var(--primary-blue); /* Blu aziendale o grigio scuro (#333) */
-    font-weight: 400;        /* Regular, non grassetto */
-    line-height: 1.5;        /* Respiro tra le righe */
-    margin: 0;
-    max-width: 700px;        /* Evita che su schermi larghi si allunghi troppo */
-    margin-left: auto;       /* Centra il blocco */
-    margin-right: auto;
-}
-
-
-/* =========================================
-   SEZIONI CATEGORIE
-   ========================================= */
-.category-section {
-    padding: 30px 40px 10px 40px;
-}
-
-.category-title {
-    font-size: 1.4rem;
+.main-title {
+    font-size: 2.5rem;
     color: var(--primary-blue);
-    margin-bottom: 20px;
-    padding-left: 15px;
-    border-left: 5px solid #d32f2f; /* Un tocco di rosso (come nel logo Intellimech o simili) per stacco */
-    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin: 0;
 }
 
-
-
-
-/* =========================================
-   SMOOTH SCROLLING GLOBALE
-   ========================================= */
-html {
-    scroll-behavior: smooth;
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin: 0;
 }
 
-
-
-
-/* =========================================
-   BARRA DI NAVIGAZIONE CATEGORIE (SHORTCUTS)
-   ========================================= */
-.nav-shortcuts {
+/* PULSANTI LANDING */
+.landing-actions {
     display: flex;
-    justify-content: space-between; /* Spinge i loghi ai lati */
-    align-items: center;
-    padding: 10px 30px; /* Un po' più spazio ai lati */
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.big-btn {
+    background-color: var(--white);
+    border: 2px solid var(--border-color);
+    padding: 18px 20px; /* Padding laterale ridotto, gestiamo con width */
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
     
+    /* --- MODIFICHE PER LARGHEZZA UGUALE --- */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra il contenuto (icona + testo) */
+    flex: 1;                 /* Occupa lo stesso spazio degli altri fratelli */
+    min-width: 280px;        /* Larghezza minima per non schiacciarsi */
+    max-width: 350px;        /* (Opzionale) Evita che diventino giganti su schermi larghi */
+    /* -------------------------------------- */
+
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.big-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 72, 131, 0.15);
+}
+
+.icon { font-size: 1.4rem; }
+
+/* =========================================
+   3. APP INTERFACE (NAVBAR & CONTENT)
+   ========================================= */
+
+/* BARRA IN ALTO (STICKY) */
+.nav-shortcuts {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Deve stare sopra il contenuto */
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    height: 70px; /* Altezza fissa */
     
-    background-color: rgba(244, 246, 248, 0.98); 
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-    
-    height: 70px; /* Altezza fissa per evitare scatti */
-    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
-/* Contenitore per tenere i bottoni al centro */
+/* *** FIX IMPORTANTE: Loghi Navbar *** */
+.nav-shortcuts .nav-logo {
+    height: 40px !important; /* Forza l'altezza piccola */
+    width: auto;
+    object-fit: contain;
+    max-width: 200px; /* Evita che si allarghi troppo */
+    display: block; /* Assicura che sia trattato come blocco */
+}
+
 .nav-buttons-container {
     display: flex;
     gap: 15px;
-    justify-content: center;
-    flex-grow: 1; /* Occupa tutto lo spazio centrale disponibile */
+    align-items: center;
 }
 
-/* Stile dei Mini-Loghi nella barra */
-.nav-logo {
-    height: 40px;
-    width: auto;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effetto rimbalzo elastico */
-}
-
-/* Posizioni di partenza (fuori schermo o nascosti) */
-.left-logo {
-    transform: translateX(-50px); /* Parte spostato a sinistra */
-}
-
-.right-logo {
-    transform: translateX(50px); /* Parte spostato a destra */
-}
-
-/* Quando la barra ha la classe "show-logos" */
-.nav-shortcuts.show-logos .nav-logo {
-    opacity: 1;
-    transform: translateX(0); /* Scivolano al loro posto originale */
-}
-
-/* --- Resto dei bottoni (shortcut-card) invariato o quasi --- */
+/* LINK MENU (Pillole) */
 .shortcut-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 50px;
-    padding: 8px 20px; /* Leggermente più compatti */
     text-decoration: none;
     color: var(--text-muted);
+    padding: 8px 20px;
+    border-radius: 20px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
     font-size: 0.9rem;
-    white-space: nowrap; /* Impedisce al testo di andare a capo */
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    display: flex; align-items: center; gap: 8px;
+    background-color: transparent;
+    white-space: nowrap; /* Evita che il testo vada a capo */
 }
 
 .shortcut-card:hover {
     color: var(--primary-blue);
-    background-color: #fff;
-    border-color: var(--primary-blue);
-    transform: translateY(-2px);
+    background-color: #f0f7ff;
 }
 
 .shortcut-card.active {
     background-color: var(--primary-blue);
-    color: white;
-    border-color: var(--primary-blue);
-    box-shadow: 0 4px 10px rgba(0, 84, 150, 0.3);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 72, 131, 0.3);
 }
-
-section {
-    scroll-margin-top: 140px; /* Aumentato un po' per sicurezza */
-}
-
-.shortcut-icon {
-    font-size: 1.2rem;
-}
-
-
-
-
-
-
 
 /* =========================================
-   SCROLL CONTAINER (LA VETRINA)
+   4. CONTENUTO E CARD
    ========================================= */
+#app-interface {
+    position: relative;
+    z-index: 1;
+}
 
+#main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
+.category-section {
+    padding: 40px 30px;
+    scroll-margin-top: 90px; /* Spazio per non finire sotto la navbar */
+}
+
+.category-title {
+    font-size: 1.6rem;
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    padding-left: 20px;
+    border-left: 5px solid #d32f2f;
+    font-weight: 700;
+}
+
+/* SCROLL CONTAINER */
 .scroll-container {
     display: flex;
     overflow-x: auto;
-    gap: 25px;
-    padding: 10px 5px 30px 5px; /* Spazio sotto per l'ombra hover */
-    scroll-behavior: smooth;
+    gap: 30px;
+    padding: 10px 5px 30px 5px;
 }
+.scroll-container::-webkit-scrollbar { height: 8px; }
+.scroll-container::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 4px; }
 
-/* Scrollbar personalizzata sottile e grigia */
-.scroll-container::-webkit-scrollbar {
-    height: 8px;
-}
-.scroll-container::-webkit-scrollbar-track {
-    background: #e0e0e0;
-    border-radius: 4px;
-}
-.scroll-container::-webkit-scrollbar-thumb {
-    background: #bdbdbd;
-    border-radius: 4px;
-}
-.scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #9e9e9e;
-}
-
-/* =========================================
-   CARD DESIGN
-   ========================================= */
+/* CARD DESIGN */
 .card {
-    background-color: var(--card-bg);
-    border: 1px solid #e0e0e0; /* Bordo sottile elegante */
-    border-radius: 8px;
-    min-width: 280px;
-    max-width: 280px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    min-width: 300px;
+    max-width: 300px;
     flex-shrink: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    border-color: var(--primary-blue); /* Al passaggio diventa blu */
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    border-color: var(--primary-blue);
 }
 
-/* Area Media */
 .card-media {
-    height: 150px;
-    background-color: var(--accent-light);
+    height: 160px;
+    background-color: #eef2f5;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .placeholder-media {
@@ -284,7 +274,6 @@ section {
     text-transform: uppercase;
 }
 
-/* Corpo Card */
 .card-body {
     padding: 20px;
     display: flex;
@@ -294,92 +283,52 @@ section {
 
 .card-body h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-main);
-    font-weight: 700;
 }
-
-/* Etichette / Labels */
-.labels {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-
-
-
-/* =========================================
-   ETICHETTE COLORATE (TAGS)
-   ========================================= */
-
-/* Stile Base (condiviso da tutte le etichette) */
-.tag {
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-weight: 600;
-    border: 1px solid transparent; /* Predisponiamo il bordo */
-    display: inline-block;
-}
-
-/* 🔵 TECH (Linguaggi, Sistemi) - Blu Tecnico */
-.tag.tech {
-    background-color: #e3f2fd;
-    color: #0277bd;
-    border-color: #b3e5fc;
-}
-
-/* 🟢 DOMAIN (Campi di applicazione AI) - Verde Scienza */
-.tag.domain {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border-color: #c8e6c9;
-}
-
-/* 🟣 LIB (Librerie, Framework) - Viola Strumenti */
-.tag.lib {
-    background-color: #f3e5f5;
-    color: #7b1fa2;
-    border-color: #e1bee7;
-}
-
-/* 🟠 TYPE (Tipo progetto, Difficoltà) - Arancione Info */
-.tag.type {
-    background-color: #fff3e0;
-    color: #ef6c00;
-    border-color: #ffe0b2;
-}
-
-/* ⚫ DEFAULT (Se ti dimentichi la classe specifica) */
-.tag.gray {
-    background-color: #f5f5f5;
-    color: #616161;
-    border-color: #e0e0e0;
-}
-
-/* Colore diverso per tag importanti se vuoi
-.tag.ai { background-color: #e3f2fd; color: #1565c0; border-color: #bbdefb; } 
-*/
 
 .summary {
     font-size: 0.9rem;
     color: var(--text-muted);
-    line-height: 1.5;
     margin-bottom: 10px;
-    flex-grow: 1; /* Spinge il bottone in basso se il testo è corto */
+    flex-grow: 1;
 }
 
-/* Bottone */
+/* *** FIX IMPORTANTE: Colori Label / Tags *** */
+.labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    /* Colore di fallback se le classi specifiche non vanno */
+    background-color: #eee; 
+    color: #555;
+}
+
+/* Definizioni specifiche colori */
+.tag.tech { background-color: #e3f2fd !important; color: #0277bd !important; border-color: #b3e5fc; }
+.tag.domain { background-color: #e8f5e9 !important; color: #2e7d32 !important; border-color: #c8e6c9; }
+.tag.lib { background-color: #f3e5f5 !important; color: #7b1fa2 !important; border-color: #e1bee7; }
+.tag.type { background-color: #fff3e0 !important; color: #ef6c00 !important; border-color: #ffe0b2; }
+
+/* BOTTONE APPROFONDISCI */
 .btn-action {
     display: block;
     text-align: center;
-    background-color: var(--card-bg);
+    background-color: var(--white);
     color: var(--primary-blue);
     border: 1px solid var(--primary-blue);
     text-decoration: none;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 6px;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.2s;
@@ -387,47 +336,23 @@ section {
 
 .btn-action:hover {
     background-color: var(--primary-blue);
-    color: #fff;
+    color: var(--white);
 }
 
-
-
-
-/* =========================================
-   TASTO "TORNA SU"
-   ========================================= */
+/* TASTO TORNA SU */
 .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-blue);
-    color: white;
-    border-radius: 50%; /* Cerchio perfetto */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    z-index: 2000; /* Sopra a tutto, anche alla navbar */
-    
-    /* Stato iniziale: Nascosto */
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px); /* Parte un po' più giù */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    background-color: var(--primary-blue); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    z-index: 2000; opacity: 0; pointer-events: none;
+    transform: translateY(20px); transition: all 0.4s ease;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-
 .back-to-top:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-5px); /* Sale un pochino al mouseover */
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    background-color: var(--primary-light);
+    transform: translateY(-5px);
 }
-
-/* Quando diventa visibile (aggiunto via JS) */
 .back-to-top.visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+    opacity: 1; pointer-events: auto; transform: translateY(0);
 }

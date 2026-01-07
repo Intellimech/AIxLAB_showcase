@@ -10,14 +10,22 @@
     background-color: transparent;
 }
 
-/* Header semplificato per le pagine interne */
+/* Navigazione specifica per le pagine interne */
 .project-nav {
+    /* --- RENDIAMOLA STICKY --- */
+    position: sticky; 
+    top: 0;
+    z-index: 1000; /* Per stare sopra al video e al testo che scorre */
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background: #fff;
+    padding: 15px 40px; /* Ho ridotto leggermente il padding per farla meno ingombrante */
+    background: rgba(255, 255, 255, 0.95); /* Leggera trasparenza moderna */
+    backdrop-filter: blur(5px); /* Effetto vetro */
     border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); /* Ombra per staccarla dal contenuto */
+    transition: all 0.3s ease;
 }
 
 .back-link {
@@ -41,7 +49,7 @@
 
 /* Stile dei loghi ridotti per la barra */
 .mini-logo {
-    height: 35px; /* Altezza contenuta per non ingombrare */
+    height:40px; /* Altezza contenuta per non ingombrare */
     width: auto;
     object-fit: contain;
 }
