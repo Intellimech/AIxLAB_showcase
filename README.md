@@ -122,4 +122,4 @@ python build.py
 ```
 Apri il file index.html generato nella root per testare le modifiche prima di fare push.
 
-© Intellimech AI Lab - Documentazione Interna
+© Intellimech AIxLAB - Documentazione Interna
