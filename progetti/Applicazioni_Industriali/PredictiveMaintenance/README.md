@@ -1,7 +1,8 @@
 ---
 title: "Manutenzione Predittiva Cuscinetti"
 summary: "Sistema IoT per monitorare la salute dei cuscinetti e prevedere guasti con 48h di anticipo."
-media: "assets/vibrazioni.jpg"
+img_card: "assets/progetto.png"
+media: "assets/vibrazioni.mp4"
 contact_email: "maintenance.ai@intellimech.it"
 
 labels:

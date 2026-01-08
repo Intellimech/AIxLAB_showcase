@@ -7,7 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 PROJECTS_MAPPING = {
     'industrial': 'progetti/Applicazioni_Industriali',
     'knowledge': 'progetti/Gestione_Conoscenza',
-    'tutorial': 'progetti/Tutorial_e_Formazione'
+    'tutorial': 'progetti/Tutorial_Formazione'
 }
 TEMPLATE_DIR = 'templates'
 
