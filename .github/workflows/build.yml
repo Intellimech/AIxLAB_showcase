@@ -1,0 +1,44 @@
+name: Build and Deploy Showcase
+
+# QUANDO deve partire?
+on:
+  push:
+    branches: ["main"]  # Se il tuo branch si chiama 'master', cambia qui!
+
+# PERMESSI (Serve al robot per scrivere il sito sul branch gh-pages)
+permissions:
+  contents: write
+
+# LAVORI DA FARE
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Usa un computer Linux virtuale
+    
+    steps:
+      # 1. Scarica il tuo codice
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      # 2. Installa Python
+      - name: Setup Python 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3. Installa le librerie (Jinja2, ecc.)
+      - name: Install dependencies 📦
+        run: |
+          pip install -r requirements.txt
+
+      # 4. Lancia il TUO script!
+      - name: Run Build Script 🔨
+        run: |
+          python build.py
+
+      # 5. Pubblica il risultato
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Crea questo ramo speciale per il sito
+          folder: .         # Pubblica tutto quello che c'è nella cartella
+          clean: true
