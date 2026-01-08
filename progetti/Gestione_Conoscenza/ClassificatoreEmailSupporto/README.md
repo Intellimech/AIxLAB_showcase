@@ -1,7 +1,8 @@
 ---
 title: "Smistamento Automatico Ticket"
 summary: "AI per analisi email in arrivo e smistamento al dipartimento corretto."
-media: "assets/mail_flow.jpg"
+img_card: "assets/progetto.png"
+media: "assets/mail_flow.mp4"
 contact_email: "support.ai@intellimech.it"
 
 labels:

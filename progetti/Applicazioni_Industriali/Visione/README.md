@@ -1,6 +1,7 @@
 ---
 title: "Controllo Qualità Saldature"
 summary: "Analisi automatica della porosità delle saldature tramite Computer Vision."
+img_card: "assets/progetto.png"
 media: "assets/weld_demo.mp4"
 contact_email: "vision.lab@intellimech.it"
 

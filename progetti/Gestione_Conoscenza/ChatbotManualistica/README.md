@@ -1,7 +1,8 @@
 ---
 title: "Assistente Tecnico Intelligente"
 summary: "Chatbot che risponde a domande tecniche interrogando i PDF dei manuali macchine."
-media: "assets/chat_preview.png"
+img_card: "assets/progetto.png"
+media: "assets/chat_preview.mp4"
 contact_email: "nlp.team@intellimech.it"
 
 labels:
