@@ -250,8 +250,10 @@ body.locked {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Assicura che le card più corte si allunghino quanto la più alta */
 }
-
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.1);
@@ -279,6 +281,7 @@ body.locked {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    flex: 1;
 }
 
 .card-body h3 {
@@ -291,7 +294,14 @@ body.locked {
     font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 10px;
-    flex-grow: 1;
+    line-height: 1.5;
+
+    /* AGGIUNTA: Magia per i 3 puntini dopo 3 righe */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Numero massimo di righe visibili */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* *** FIX IMPORTANTE: Colori Label / Tags *** */
@@ -321,6 +331,8 @@ body.locked {
 
 /* BOTTONE APPROFONDISCI */
 .btn-action {
+    margin-top: auto;
+    
     display: block;
     text-align: center;
     background-color: var(--white);
