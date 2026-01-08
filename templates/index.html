@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
 <body class="locked">
     <div id="landing-screen">
         <div class="landing-content">
-            
+
             <div class="landing-logos">
                 <img src="img/LogoIMECH.png" alt="Intellimech" class="big-logo">
                 <div class="vertical-line"></div>
@@ -42,7 +43,7 @@
 
     <div id="app-interface">
         <nav class="nav-shortcuts sticky-mode">
-            
+
             <img src="img/LogoIMECH.png" alt="Intellimech" class="nav-logo left-logo">
 
             <div class="nav-buttons-container">
@@ -61,84 +62,101 @@
             </div>
 
             <img src="img/LogoAIxLAB.png" alt="AI Lab" class="nav-logo right-logo">
-            
+
         </nav>
 
         <div id="main-content">
-            
+
             <section id="industrial" class="category-section">
                 <h2 class="category-title">Applicazioni Industriali</h2>
                 <div class="scroll-container">
+                    {% for project in projects if project.category == 'industrial' %}
                     <div class="card">
                         <div class="card-media">
-                            <div class="placeholder-media">GIF DIFETTI</div>
+                            {% if project.img_card %}
+                            <img src="{{ project.path }}/{{ project.img_card }}" alt="preview"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            {% else %}
+                            <div class="placeholder-media">{{ project.title[:3]|upper }}</div>
+                            {% endif %}
                         </div>
+
                         <div class="card-body">
-                            <h3>Visual Inspection</h3>
+                            <h3>{{ project.title }}</h3>
+
                             <div class="labels">
-                                <span class="tag domain">Vision</span>
-                                <span class="tag lib">YOLOv8</span>
-                                <span class="tag type">PoC</span>
+                                {% for label in project.labels %}
+                                <span class="tag {{ label.type }}">{{ label.text }}</span>
+                                {% endfor %}
                             </div>
-                            <p class="summary">Rilevamento automatico difetti su componenti metallici.</p>
-                            <a href="progetti\Applicazioni_Industriali\Visione\readme.html" class="btn-action">Approfondisci</a>
+
+                            <p class="summary">{{ project.summary }}</p>
+                            <a href="{{ project.path }}/readme.html" class="btn-action">Approfondisci</a>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-media">
-                            <div class="placeholder-media" style="background:#444">PREDICTIVE</div>
-                        </div>
-                        <div class="card-body">
-                            <h3>Manutenzione Predittiva</h3>
-                            <div class="labels">
-                                <span class="tag domain">IoT</span>
-                                <span class="tag tech">Python</span>
-                            </div>
-                            <p class="summary">Analisi vibrazioni per prevenire guasti macchinari.</p>
-                            <a href="#" class="btn-action">Approfondisci</a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </section>
 
             <section id="knowledge" class="category-section">
                 <h2 class="category-title">Gestione della Conoscenza Aziendale</h2>
                 <div class="scroll-container">
+                    {% for project in projects if project.category == 'knowledge' %}
                     <div class="card">
                         <div class="card-media">
-                            <div class="placeholder-media" style="background:#00695c">CHATBOT RAG</div>
+                            {% if project.img_card %}
+                            <img src="{{ project.path }}/{{ project.img_card }}" alt="preview"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            {% else %}
+                            <div class="placeholder-media">{{ project.title[:3]|upper }}</div>
+                            {% endif %}
                         </div>
+
                         <div class="card-body">
-                            <h3>Assistente Tecnico</h3>
+                            <h3>{{ project.title }}</h3>
+
                             <div class="labels">
-                                <span class="tag domain">NLP</span>
-                                <span class="tag lib">LangChain</span>
-                                <span class="tag lib">OpenAI</span>
+                                {% for label in project.labels %}
+                                <span class="tag {{ label.type }}">{{ label.text }}</span>
+                                {% endfor %}
                             </div>
-                            <p class="summary">Chatta con i manuali tecnici in PDF aziendali.</p>
-                            <a href="#" class="btn-action">Approfondisci</a>
+
+                            <p class="summary">{{ project.summary }}</p>
+                            <a href="{{ project.path }}/readme.html" class="btn-action">Approfondisci</a>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </section>
 
             <section id="tutorial" class="category-section">
                 <h2 class="category-title">Tutorial e Formazione</h2>
                 <div class="scroll-container">
+                    {% for project in projects if project.category == 'tutorial' %}
                     <div class="card">
                         <div class="card-media">
-                            <div class="placeholder-media" style="background:#f57f17">CORSO PYTHON</div>
+                            {% if project.img_card %}
+                            <img src="{{ project.path }}/{{ project.img_card }}" alt="preview"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            {% else %}
+                            <div class="placeholder-media">{{ project.title[:3]|upper }}</div>
+                            {% endif %}
                         </div>
+
                         <div class="card-body">
-                            <h3>Python per AI</h3>
+                            <h3>{{ project.title }}</h3>
+
                             <div class="labels">
-                                <span class="tag tech">Python</span>
-                                <span class="tag type">Beginner</span>
+                                {% for label in project.labels %}
+                                <span class="tag {{ label.type }}">{{ label.text }}</span>
+                                {% endfor %}
                             </div>
-                            <p class="summary">Introduzione alle librerie Pandas e Numpy.</p>
-                            <a href="#" class="btn-action">Approfondisci</a>
+
+                            <p class="summary">{{ project.summary }}</p>
+                            <a href="{{ project.path }}/readme.html" class="btn-action">Approfondisci</a>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </section>
 
@@ -146,7 +164,8 @@
     </div>
 
     <a href="#" class="back-to-top" id="backToTopBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>
         </svg>
@@ -154,4 +173,5 @@
 
     <script src="scripts/script_barra_nav.js"></script>
 </body>
+
 </html>
