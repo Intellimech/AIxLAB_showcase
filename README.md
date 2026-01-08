@@ -1,4 +1,9 @@
-# 🏭 AI Lab Showcase
+<div align="center">
+  <img src="img/LogoIMECH.png" height="50" alt="Intellimech Logo" />
+  &nbsp;&nbsp;&nbsp;&nbsp;<img src="img/LogoAIxLAB.png" height="50" alt="AI Lab Logo" />
+</div>
+<br/>
+
 
 Benvenuti nel repository ufficiale della **Vetrina Progetti del Laboratorio di Intelligenza Artificiale**.
 
