@@ -216,8 +216,8 @@ body.locked {
 }
 
 .category-section {
-    padding: 40px 30px;
-    scroll-margin-top: 90px; /* Spazio per non finire sotto la navbar */
+    padding: 20px 20px;
+    scroll-margin-top: 50px; /* Spazio per non finire sotto la navbar */
 }
 
 .category-title {
@@ -245,16 +245,14 @@ body.locked {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     
-    /* DIMENSIONI FISSE */
-    width: 300px;        /* Larghezza fissa */
-    height: 480px;       /* Altezza fissa (calcolata per contenere tutto) */
-    flex-shrink: 0;      /* Non si schiaccia mai */
+    /* 1. DIMENSIONI ESTERNE FISSE */
+    width: 300px;
+    height: 500px; /* Aumentato leggermente per sicurezza */
+    flex-shrink: 0;
     
-    /* LAYOUT INTERNO */
     display: flex;
     flex-direction: column;
-    overflow: hidden;    /* Taglia tutto quello che esce (sicurezza) */
-    
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
@@ -266,7 +264,8 @@ body.locked {
 }
 
 .card-media {
-    height: 160px;
+    height: 160px; /* Altezza fissa immagine */
+    flex-shrink: 0; /* Impedisce all'immagine di schiacciarsi */
     background-color: #eef2f5;
     display: flex;
     align-items: center;
@@ -285,19 +284,26 @@ body.locked {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    /* Occupa tutto lo spazio rimanente sotto l'immagine */
-    height: 100%; 
+    height: 100%; /* Occupa tutto lo spazio rimanente */
 }
 
+/* --- IL TITOLO: Spazio riservato per 2 righe --- */
 .card-body h3 {
     margin: 0 0 10px 0;
     font-size: 1.15rem;
     color: var(--text-main);
-    /* Tronca il titolo se è lunghissimo (max 2 righe) */
+    line-height: 1.4; /* Importante per il calcolo altezza */
+    
+    /* BLOCCO RIGIDO */
+    min-height: 2.8em; /* 1.4 (line-height) * 2 righe = 2.8em */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    
+    /* Allineamento verticale del testo se è una riga sola (opzionale) */
+    display: flex;
+    align-items: center; 
 }
 
 .summary {
@@ -306,7 +312,9 @@ body.locked {
     line-height: 1.5;
     margin-bottom: 15px;
     
-    /* Tronca tassativamente alla 3a riga */
+    /* BLOCCO RIGIDO */
+    /* Non usiamo min-height qui, lasciamo che prenda lo spazio che c'è */
+    /* Ma tagliamo tassativamente dopo 3 righe */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -319,14 +327,12 @@ body.locked {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     
-    /* TRUCCO: Riserva spazio verticale fisso per evitare saltelli */
-    /* Circa 50px è lo spazio di 2 righe di tag */
-    min-height: 52px; 
-    max-height: 52px; /* Forza il taglio se ne metti troppe */
-    overflow: hidden;
-    align-content: start; /* Allinea i tag in alto nel loro box */
+    /* BLOCCO RIGIDO */
+    height: 70px; /* Spazio sufficiente per 2 righe di tag */
+    overflow: hidden; /* Se ne metti 3, la terza sparisce */
+    align-content: flex-start; /* I tag partono dall'alto */
 }
 
 .tag {
@@ -348,8 +354,7 @@ body.locked {
 
 /* BOTTONE APPROFONDISCI */
 .btn-action {
-    margin-top: auto; /* Spinge verso il basso sfruttando lo spazio vuoto */
-    
+    margin-top: auto; /* La chiave di tutto: spinge giù */
     display: block;
     text-align: center;
     background-color: var(--white);
@@ -362,7 +367,6 @@ body.locked {
     font-size: 0.9rem;
     transition: all 0.2s;
 }
-
 .btn-action:hover {
     background-color: var(--primary-blue);
     color: var(--white);
