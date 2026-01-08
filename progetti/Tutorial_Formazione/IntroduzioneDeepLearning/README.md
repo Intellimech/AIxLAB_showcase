@@ -2,7 +2,7 @@
 title: "Concetti di Deep Learning"
 summary: "Panoramica teorica sulle Reti Neurali, CNN e Transformers."
 img_card: "assets/progetto.png"
-media: "assets/neural_net.gif"
+media: "assets/neural_net.mp4"
 contact_email: "research@intellimech.it"
 
 labels:
