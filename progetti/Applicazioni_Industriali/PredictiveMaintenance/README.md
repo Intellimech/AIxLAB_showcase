@@ -1,30 +1,31 @@
 ---
-title: "Fault Prediction System"
-summary: "Predizione difetti su componenti metallici."
-img_card: "assets/img.png"
-media: "assets/demo.mp4"  # Questo video finirà IN CIMA alla pagina
-repo_url: "https://github.com/Intellimech/..."
+title: "Manutenzione Predittiva Cuscinetti"
+summary: "Sistema IoT per monitorare la salute dei cuscinetti e prevedere guasti con 48h di anticipo."
+media: "assets/vibrazioni.jpg"
+contact_email: "maintenance.ai@intellimech.it"
 
-# DEFINIZIONE LABELS (Flessibilità Totale)
-# I tipi disponibili nel CSS sono: tech, domain, lib, type
-# Ma puoi aggiungerne di nuovi nel CSS quando vuoi.
 labels:
-  - text: "Manutenzione Predittiva"
+  - text: "IoT"
     type: "domain"
-  - text: "YOLOv8"
-    type: "lib"
   - text: "Python"
     type: "tech"
+  - text: "Sklearn"
+    type: "lib"
   - text: "PoC"
     type: "type"
 ---
 
 ## Il Problema
-I cuscinetti si rompono senza preavviso...
+I guasti improvvisi ai cuscinetti delle macchine CNC causano fermi linea non pianificati che costano all'azienda circa 15.000€ l'ora. La manutenzione a calendario spesso sostituisce pezzi ancora buoni o interviene troppo tardi.
 
 ## La Soluzione
-Abbiamo installato sensori di vibrazione...
+Abbiamo sviluppato un sistema di **Anomaly Detection** basato su sensori di vibrazione (accelerometri).
+Il modello apprende il comportamento "sano" della macchina e segnala deviazioni significative.
 
-### Risultati
-* Accuratezza: 98%
-* Risparmio: 10k/anno
+### Stack Tecnologico
+* **Hardware:** Sensori IO-Link collegati a Edge Gateway
+* **Software:** Python, Scikit-learn (Isolation Forest)
+* **Dashboard:** Grafana per la visualizzazione in tempo reale
+
+## Risultati
+Il PoC, testato su 3 macchine per 6 mesi, ha identificato **2 guasti reali** con un anticipo medio di 36 ore, permettendo la sostituzione programmata durante il turno di notte.

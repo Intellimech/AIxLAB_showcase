@@ -14,7 +14,7 @@ TEMPLATE_DIR = 'templates'
 # Prepariamo Jinja2
 env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 home_template = env.get_template('index.html')
-project_template = env.get_template('project.html')
+project_template = env.get_template('projects.html')
 
 def process_project(base_dir, project_folder, category):
     """

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - AI Lab</title>
+    <title>Fault Prediction System - AI Lab</title>
     <link rel="stylesheet" href="../../../styles/global.css">
     <link rel="stylesheet" href="../../../styles/projects.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -26,32 +26,44 @@
 
         <header class="project-header">
             <div class="labels" style="justify-content: center; margin-bottom: 15px;">
-                {% for label in labels %}
-                    <span class="tag {{ label.type }}">{{ label.text }}</span>
-                {% endfor %}
+                
+                    <span class="tag domain">Manutenzione Predittiva</span>
+                
+                    <span class="tag lib">YOLOv8</span>
+                
+                    <span class="tag tech">Python</span>
+                
+                    <span class="tag type">PoC</span>
+                
             </div>
             
-            <h1 class="project-title">{{ title }}</h1>
-            <p class="subtitle" style="color:#666; font-size:1.2rem;">{{ summary }}</p>
+            <h1 class="project-title">Fault Prediction System</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">Predizione difetti su componenti metallici.</p>
         </header>
 
-        {% if media_url %}
+        
         <div class="project-hero-media">
-            {% if media_url.endswith('.mp4') %}
-                <video src="{{ media_url }}" controls autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
-            {% else %}
-                <img src="{{ media_url }}" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
-            {% endif %}
+            
+                <video src="assets/demo.mp4" controls autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
+            
         </div>
-        {% endif %}
+        
 
         <article class="project-content">
-            {{ content | safe }}
+            <h2>Il Problema</h2>
+<p>I cuscinetti si rompono senza preavviso...</p>
+<h2>La Soluzione</h2>
+<p>Abbiamo installato sensori di vibrazione...</p>
+<h3>Risultati</h3>
+<ul>
+<li>Accuratezza: 98%</li>
+<li>Risparmio: 10k/anno</li>
+</ul>
             
             <div class="code-box">
             <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
             
-            <a href="mailto:{{ contact_email | default('info@intellimech.it') }}?subject=Richiesta info: {{ title }}" class="btn-code contact-btn">
+            <a href="mailto:info@intellimech.it?subject=Richiesta info: Fault Prediction System" class="btn-code contact-btn">
                 
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2"></rect>

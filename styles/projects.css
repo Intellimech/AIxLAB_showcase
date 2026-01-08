@@ -117,29 +117,42 @@
     margin-bottom: 10px;
 }
 
-/* Box Codice / Download */
+/* Stile per il box finale */
 .code-box {
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;
     border-radius: 8px;
-    padding: 20px;
+    padding: 30px; /* Un po' più di spazio */
     margin-top: 40px;
     text-align: center;
 }
 
-.btn-code {
-    background-color: #24292e; /* Colore GitHub */
-    color: white;
-    padding: 12px 25px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.2s;
+.code-box p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #555;
 }
 
-.btn-code:hover {
-    background-color: #000;
+/* Bottone Contattaci */
+.contact-btn {
+    background-color: var(--primary-blue); /* Usiamo il blu del brand */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px; /* Pillola rotonda, più amichevole */
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    font-size: 1rem;
+}
+
+.contact-btn:hover {
+    background-color: white;
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 72, 131, 0.2);
 }
