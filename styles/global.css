@@ -1,0 +1,358 @@
+/* =========================================
+   1. VARIABILI E RESET (Base)
+   ========================================= */
+:root {
+    --primary-blue: #004883;     
+    --primary-light: #005496;    
+    --accent-bg: #f4f6f8;        
+    --text-main: #333333;        
+    --text-muted: #666666;       
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+body.locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* =========================================
+   2. LANDING SCREEN (COPERTINA)
+   ========================================= */
+#landing-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--white);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+
+#landing-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.landing-content {
+    text-align: center;
+    max-width: 1000px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* LOGHI GRANDI (Solo per la Landing) */
+.landing-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.big-logo {
+    height: 80px; 
+    width: auto;
+    object-fit: contain;
+}
+
+.vertical-line {
+    width: 2px; height: 60px; background-color: #ccc;
+}
+
+/* TESTI LANDING */
+.landing-texts { display: flex; flex-direction: column; gap: 15px; }
+
+.main-title {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin: 0;
+}
+
+/* PULSANTI LANDING */
+.landing-actions {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.big-btn {
+    background-color: var(--white);
+    border: 2px solid var(--border-color);
+    padding: 18px 20px; /* Padding laterale ridotto, gestiamo con width */
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* --- MODIFICHE PER LARGHEZZA UGUALE --- */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra il contenuto (icona + testo) */
+    flex: 1;                 /* Occupa lo stesso spazio degli altri fratelli */
+    min-width: 280px;        /* Larghezza minima per non schiacciarsi */
+    max-width: 350px;        /* (Opzionale) Evita che diventino giganti su schermi larghi */
+    /* -------------------------------------- */
+
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.big-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 72, 131, 0.15);
+}
+
+.icon { font-size: 1.4rem; }
+
+/* =========================================
+   3. APP INTERFACE (NAVBAR & CONTENT)
+   ========================================= */
+
+/* BARRA IN ALTO (STICKY) */
+.nav-shortcuts {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Deve stare sopra il contenuto */
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    height: 70px; /* Altezza fissa */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+/* *** FIX IMPORTANTE: Loghi Navbar *** */
+.nav-shortcuts .nav-logo {
+    height: 40px !important; /* Forza l'altezza piccola */
+    width: auto;
+    object-fit: contain;
+    max-width: 200px; /* Evita che si allarghi troppo */
+    display: block; /* Assicura che sia trattato come blocco */
+}
+
+.nav-buttons-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* LINK MENU (Pillole) */
+.shortcut-card {
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    display: flex; align-items: center; gap: 8px;
+    background-color: transparent;
+    white-space: nowrap; /* Evita che il testo vada a capo */
+}
+
+.shortcut-card:hover {
+    color: var(--primary-blue);
+    background-color: #f0f7ff;
+}
+
+.shortcut-card.active {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 72, 131, 0.3);
+}
+
+/* =========================================
+   4. CONTENUTO E CARD
+   ========================================= */
+#app-interface {
+    position: relative;
+    z-index: 1;
+}
+
+#main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-section {
+    padding: 40px 30px;
+    scroll-margin-top: 90px; /* Spazio per non finire sotto la navbar */
+}
+
+.category-title {
+    font-size: 1.6rem;
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    padding-left: 20px;
+    border-left: 5px solid #d32f2f;
+    font-weight: 700;
+}
+
+/* SCROLL CONTAINER */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 10px 5px 30px 5px;
+}
+.scroll-container::-webkit-scrollbar { height: 8px; }
+.scroll-container::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 4px; }
+
+/* CARD DESIGN */
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    min-width: 300px;
+    max-width: 300px;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    border-color: var(--primary-blue);
+}
+
+.card-media {
+    height: 160px;
+    background-color: #eef2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.placeholder-media {
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-body h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-main);
+}
+
+.summary {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+/* *** FIX IMPORTANTE: Colori Label / Tags *** */
+.labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    /* Colore di fallback se le classi specifiche non vanno */
+    background-color: #eee; 
+    color: #555;
+}
+
+/* Definizioni specifiche colori */
+.tag.tech { background-color: #e3f2fd !important; color: #0277bd !important; border-color: #b3e5fc; }
+.tag.domain { background-color: #e8f5e9 !important; color: #2e7d32 !important; border-color: #c8e6c9; }
+.tag.lib { background-color: #f3e5f5 !important; color: #7b1fa2 !important; border-color: #e1bee7; }
+.tag.type { background-color: #fff3e0 !important; color: #ef6c00 !important; border-color: #ffe0b2; }
+
+/* BOTTONE APPROFONDISCI */
+.btn-action {
+    display: block;
+    text-align: center;
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+/* TASTO TORNA SU */
+.back-to-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    background-color: var(--primary-blue); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    z-index: 2000; opacity: 0; pointer-events: none;
+    transform: translateY(20px); transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.back-to-top:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-5px);
+}
+.back-to-top.visible {
+    opacity: 1; pointer-events: auto; transform: translateY(0);
+}

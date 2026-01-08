@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente Tecnico Intelligente - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Torna alla Vetrina
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/logoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                    <span class="tag domain">GenAI</span>
+                
+                    <span class="tag tech">RAG</span>
+                
+                    <span class="tag lib">LangChain</span>
+                
+                    <span class="tag type">Internal Tool</span>
+                
+            </div>
+            
+            <h1 class="project-title">Assistente Tecnico Intelligente</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">Chatbot che risponde a domande tecniche interrogando i PDF dei manuali macchine.</p>
+        </header>
+
+        
+        <div class="project-hero-media">
+            
+                <img src="assets/chat_preview.png" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
+            
+        </div>
+        
+
+        <article class="project-content">
+            <h2>Scenario</h2>
+<p>I tecnici dell'assistenza passano il 30% del loro tempo a cercare codici di errore su manuali PDF lunghi centinaia di pagine.</p>
+<h2>La Soluzione (RAG)</h2>
+<p>Abbiamo implementato un'architettura <strong>Retrieval-Augmented Generation</strong>:
+1.  I manuali vengono indicizzati in un Vector Database (ChromaDB).
+2.  Quando il tecnico fa una domanda, il sistema recupera i paragrafi rilevanti.
+3.  Un LLM (GPT-4 o Llama3 locale) genera la risposta basandosi <em>solo</em> sui documenti aziendali.</p>
+<h2>Vantaggi</h2>
+<ul>
+<li><strong>Risposte immediate:</strong> Da 15 minuti di ricerca a 10 secondi.</li>
+<li><strong>Multilingua:</strong> I manuali sono in italiano, ma il bot può rispondere in inglese ai colleghi esteri.</li>
+<li><strong>Citazioni:</strong> Il bot indica sempre pagina e capitolo della fonte.</li>
+</ul>
+            
+            <div class="code-box">
+            <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+            
+            <a href="mailto:info@intellimech.it?subject=Richiesta info: Assistente Tecnico Intelligente" class="btn-code contact-btn">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                
+                Contattaci
+            </a>
+        </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

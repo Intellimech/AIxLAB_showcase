@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smistamento Automatico Ticket - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Torna alla Vetrina
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/logoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                    <span class="tag domain">NLP</span>
+                
+                    <span class="tag lib">Bert</span>
+                
+                    <span class="tag tech">Automation</span>
+                
+                    <span class="tag type">Production</span>
+                
+            </div>
+            
+            <h1 class="project-title">Smistamento Automatico Ticket</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">AI per analisi email in arrivo e smistamento al dipartimento corretto.</p>
+        </header>
+
+        
+        <div class="project-hero-media">
+            
+                <img src="assets/mail_flow.jpg" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
+            
+        </div>
+        
+
+        <article class="project-content">
+            <h2>Il Problema</h2>
+<p>Il service desk riceve 500 email al giorno. Una persona dedica 4 ore al giorno solo per leggere l'oggetto e inoltrare la mail a "Meccanica", "Elettronica" o "Software".</p>
+<h2>Soluzione</h2>
+<p>Un modello di classificazione del testo (basato su BERT fine-tuned) legge il contenuto della mail e predice la categoria di appartenenza con un grado di confidenza.</p>
+<ul>
+<li>Se confidenza &gt; 85%: Smistamento automatico.</li>
+<li>Se confidenza &lt; 85%: Assegnazione a operatore umano per revisione.</li>
+</ul>
+<h2>Risultato</h2>
+<p>Il 78% dei ticket viene ora smistato automaticamente istantaneamente, liberando mezza risorsa FTE per attività a valore aggiunto.</p>
+            
+            <div class="code-box">
+            <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+            
+            <a href="mailto:info@intellimech.it?subject=Richiesta info: Smistamento Automatico Ticket" class="btn-code contact-btn">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                
+                Contattaci
+            </a>
+        </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

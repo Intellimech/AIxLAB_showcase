@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase Laboratorio AI</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="locked">
+    <div id="landing-screen">
+        <div class="landing-content">
+
+            <div class="landing-logos">
+                <img src="img/LogoIMECH.png" alt="Intellimech" class="big-logo">
+                <div class="vertical-line"></div>
+                <img src="img/LogoAIxLAB.png" alt="AI Lab" class="big-logo">
+            </div>
+
+            <div class="landing-texts">
+                <h1 class="main-title">Laboratorio di Intelligenza Artificiale</h1>
+                <p class="subtitle">
+                    Esplora i nostri progetti di ricerca e sviluppo<br>
+                    declinati in tre filoni strategici:
+                </p>
+            </div>
+
+            <div class="landing-actions">
+                <button class="big-btn" onclick="enterSite('industrial')">
+                    <span class="icon">🏭</span> Applicazioni Industriali
+                </button>
+                <button class="big-btn" onclick="enterSite('knowledge')">
+                    <span class="icon">🧠</span> Gestione della Conoscenza Aziendale
+                </button>
+                <button class="big-btn" onclick="enterSite('tutorial')">
+                    <span class="icon">🎓</span> Tutorial e Formazione
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-interface">
+        <nav class="nav-shortcuts sticky-mode">
+
+            <img src="img/LogoIMECH.png" alt="Intellimech" class="nav-logo left-logo">
+
+            <div class="nav-buttons-container">
+                <a href="#industrial" class="shortcut-card">
+                    <span class="shortcut-icon">🏭</span>
+                    Applicazioni Industriali
+                </a>
+                <a href="#knowledge" class="shortcut-card">
+                    <span class="shortcut-icon">🧠</span>
+                    Gestione della Conoscenza Aziendale
+                </a>
+                <a href="#tutorial" class="shortcut-card">
+                    <span class="shortcut-icon">🎓</span>
+                    Tutorial e Formazione
+                </a>
+            </div>
+
+            <img src="img/LogoAIxLAB.png" alt="AI Lab" class="nav-logo right-logo">
+
+        </nav>
+
+        <div id="main-content">
+
+            <section id="industrial" class="category-section">
+                <h2 class="category-title">Applicazioni Industriali</h2>
+                <div class="scroll-container">
+                    {% for project in projects if project.category == 'industrial' %}
+                    <div class="card">
+                        <div class="card-media">
+                            {% if project.img_card %}
+                            <img src="{{ project.path }}/{{ project.img_card }}" alt="preview"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            {% else %}
+                            <div class="placeholder-media">{{ project.title[:3]|upper }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="card-body">
+                            <h3>{{ project.title }}</h3>
+
+                            <div class="labels">
+                                {% for label in project.labels %}
+                                <span class="tag {{ label.type }}">{{ label.text }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <p class="summary">{{ project.summary }}</p>
+                            <a href="{{ project.path }}/readme.html" class="btn-action">Approfondisci</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section id="knowledge" class="category-section">
+                <h2 class="category-title">Gestione della Conoscenza Aziendale</h2>
+                <div class="scroll-container">
+                    {% for project in projects if project.category == 'knowledge' %}
+                    <div class="card">
+                        <div class="card-media">
+                            {% if project.img_card %}
+                            <img src="{{ project.path }}/{{ project.img_card }}" alt="preview"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            {% else %}
+                            <div class="placeholder-media">{{ project.title[:3]|upper }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="card-body">
+                            <h3>{{ project.title }}</h3>
+
+                            <div class="labels">
+                                {% for label in project.labels %}
+                                <span class="tag {{ label.type }}">{{ label.text }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <p class="summary">{{ project.summary }}</p>
+                            <a href="{{ project.path }}/readme.html" class="btn-action">Approfondisci</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section id="tutorial" class="category-section">
+                <h2 class="category-title">Tutorial e Formazione</h2>
+                <div class="scroll-container">
+                    {% for project in projects if project.category == 'tutorial' %}
+                    <div class="card">
+                        <div class="card-media">
+                            {% if project.img_card %}
+                            <img src="{{ project.path }}/{{ project.img_card }}" alt="preview"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            {% else %}
+                            <div class="placeholder-media">{{ project.title[:3]|upper }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="card-body">
+                            <h3>{{ project.title }}</h3>
+
+                            <div class="labels">
+                                {% for label in project.labels %}
+                                <span class="tag {{ label.type }}">{{ label.text }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <p class="summary">{{ project.summary }}</p>
+                            <a href="{{ project.path }}/readme.html" class="btn-action">Approfondisci</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </a>
+
+    <script src="scripts/script_barra_nav.js"></script>
+</body>
+
+</html>

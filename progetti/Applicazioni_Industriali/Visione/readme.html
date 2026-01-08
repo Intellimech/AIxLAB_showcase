@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controllo Qualità Saldature - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Torna alla Vetrina
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/logoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                    <span class="tag domain">Computer Vision</span>
+                
+                    <span class="tag tech">Deep Learning</span>
+                
+                    <span class="tag lib">YOLOv8</span>
+                
+                    <span class="tag type">Pilot</span>
+                
+            </div>
+            
+            <h1 class="project-title">Controllo Qualità Saldature</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">Analisi automatica della porosità delle saldature tramite Computer Vision.</p>
+        </header>
+
+        
+        <div class="project-hero-media">
+            
+                <video src="assets/weld_demo.mp4" controls autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
+            
+        </div>
+        
+
+        <article class="project-content">
+            <h2>Obiettivo</h2>
+<p>Automatizzare l'ispezione visiva delle saldature su componenti automotive, attualmente svolta manualmente con lampade UV, un processo lento e soggetto a stanchezza dell'operatore.</p>
+<h2>Approccio</h2>
+<p>Utilizziamo una rete neurale convoluzionale (CNN) addestrata su un dataset di 1.200 immagini di saldature classificate come "Conformi", "Porosità" o "Cricche".</p>
+<h3>Caratteristiche</h3>
+<ul>
+<li><strong>Velocità:</strong> Analisi in &lt; 50ms per pezzo.</li>
+<li><strong>Hardware:</strong> Jetson Orin Nano per inferenza on-edge.</li>
+<li><strong>Integrazione:</strong> Segnale OK/NOK inviato direttamente al PLC via Modbus.</li>
+</ul>
+<h2>Performance</h2>
+<p>Il sistema ha raggiunto un'accuratezza del <strong>96.5%</strong> sul set di validazione, riducendo i falsi positivi del 12% rispetto al sistema di visione tradizionale precedente.</p>
+            
+            <div class="code-box">
+            <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+            
+            <a href="mailto:info@intellimech.it?subject=Richiesta info: Controllo Qualità Saldature" class="btn-code contact-btn">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                
+                Contattaci
+            </a>
+        </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
