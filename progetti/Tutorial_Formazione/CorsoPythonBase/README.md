@@ -1,7 +1,8 @@
 ---
 title: "Python per l'Analisi Dati"
 summary: "Corso introduttivo per ingegneri: dalle basi di Python alla visualizzazione dati."
-media: "assets/pandas_course.png"
+img_card: "assets/progetto.png"
+media: "assets/pandas_course.mp4"
 contact_email: "training@intellimech.it"
 
 labels:
