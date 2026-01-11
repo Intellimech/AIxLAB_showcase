@@ -430,6 +430,8 @@ body.locked {
     }
 
 
+
+
     /* --- 2. APP NAVBAR (Layout "App Store") --- */
 
     .nav-shortcuts {
@@ -447,17 +449,20 @@ body.locked {
         order: 1; /* <--- Reset ordine: Loghi tornano primi su mobile */
     }
     
-    .nav-buttons-container {
+   .nav-buttons-container {
         width: 100%;
-        overflow-x: auto; 
-        white-space: nowrap; 
-        padding: 0 15px 10px 15px; 
-        justify-content: flex-start;
-        order: 2; /* <--- Reset ordine: Bottoni tornano secondi su mobile */
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 0 15px 10px 15px;
         
+        /* Modifica per centrare se i pulsanti sono pochi, ma permettere scroll se tanti */
+        display: flex;
+        justify-content: flex-start; /* 'start' è più sicuro per lo scroll su mobile */
+        
+        order: 2;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; 
-        -ms-overflow-style: none; 
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
     
     .nav-buttons-container::-webkit-scrollbar { display: none; }
@@ -472,10 +477,10 @@ body.locked {
     }
 
     .shortcut-card {
-        flex-shrink: 0; 
-        font-size: 0.85rem;
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
+        flex-shrink: 0;
+        font-size: 0.9rem; /* Testo un filo più grande */
+        padding: 10px 20px; /* Area tocco più comoda */
+        margin-right: 5px; /* Spazietto extra */
     }
     
     .shortcut-card.active {
