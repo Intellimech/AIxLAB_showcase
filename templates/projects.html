@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,16 @@
     <link rel="stylesheet" href="../../../styles/projects.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <nav class="project-nav">
-        <a href="../../../index.html?mode=app" class="back-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Torna alla Home
+        <a href="../../../index.html?mode=app" class="back-link icon-only" aria-label="Torna alla Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
         </a>
         <div class="logo-group">
             <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
@@ -27,10 +32,10 @@
         <header class="project-header">
             <div class="labels" style="justify-content: center; margin-bottom: 15px;">
                 {% for label in labels %}
-                    <span class="tag {{ label.type }}">{{ label.text }}</span>
+                <span class="tag {{ label.type }}">{{ label.text }}</span>
                 {% endfor %}
             </div>
-            
+
             <h1 class="project-title">{{ title }}</h1>
             <p class="subtitle" style="color:#666; font-size:1.2rem;">{{ summary }}</p>
         </header>
@@ -38,34 +43,41 @@
         {% if media_url %}
         <div class="project-hero-media">
             {% if media_url.endswith('.mp4') %}
-                <video src="{{ media_url }}" controls autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
+            <video src="{{ media_url }}" controls autoplay muted loop
+                style="width:100%; height:100%; object-fit:cover;"></video>
             {% else %}
-                <img src="{{ media_url }}" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
+            <img src="{{ media_url }}" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
             {% endif %}
         </div>
         {% endif %}
 
         <article class="project-content">
             {{ content | safe }}
-            
+
             <div class="code-box">
-            <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
-            
-            <a href="mailto:{{ contact_email | default('info@intellimech.it') }}?subject=Richiesta info: {{ title }}" class="btn-code contact-btn">
-                
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-                
-                Contattaci
-            </a>
-        </div>
+                <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+
+                <a href="mailto:{{ contact_email | default('info@intellimech.it') }}?subject=Richiesta info: {{ title }}"
+                    class="btn-code contact-btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+
+                    Contattaci
+                </a>
+            </div>
         </article>
     </div>
 
     <a href="#" class="back-to-top" id="backToTopBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
     </a>
     <script>
         const backToTopBtn = document.getElementById('backToTopBtn');
@@ -79,4 +91,5 @@
         });
     </script>
 </body>
+
 </html>

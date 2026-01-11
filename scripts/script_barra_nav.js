@@ -1,27 +1,151 @@
-// --- CONTROLLO MODALITÀ AVVIO (Salto Copertina) ---
-document.addEventListener("DOMContentLoaded", () => {
-    // Leggiamo i parametri dell'URL
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    // Se troviamo ?mode=app (significa che torniamo da un progetto)
-    if (urlParams.get('mode') === 'app') {
-        const landingScreen = document.getElementById('landing-screen');
-        
-        if (landingScreen) {
-            // 1. Nascondiamo la copertina ISTANTANEAMENTE (senza animazione)
-            landingScreen.style.opacity = '0'; 
-            landingScreen.style.visibility = 'hidden';
-            landingScreen.classList.add('hidden');
-            // Nota: usiamo style inline per sovrascrivere tutto subito ed evitare "flash"
-            landingScreen.style.display = 'none'; 
-        }
+// Funzione globale per entrare nel sito (usata dai bottoni della Landing)
+window.enterSite = function(targetId) {
+    const landing = document.getElementById('landing-screen');
+    const body = document.body;
 
-        // 2. Sblocchiamo subito il body
+    // 1. Nascondi la Landing Page
+    if (landing) {
+        landing.classList.add('hidden'); // Aggiunge la classe che mette opacity: 0
+        
+        // Aspetta la fine della transizione (0.5s) per rimuoverlo dal flusso (opzionale)
+        setTimeout(() => {
+            landing.style.display = 'none';
+        }, 500);
+    }
+
+    // 2. Sblocca lo scroll del body
+    body.classList.remove('locked');
+
+    // 3. Se c'è una categoria specifica, vacci
+    if (targetId) {
+        // Piccola attesa per dare tempo al browser di "sbloccare" il layout
+        setTimeout(() => {
+            const targetSection = document.getElementById(targetId);
+            const navHeight = document.querySelector('.nav-shortcuts')?.offsetHeight || 70;
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - navHeight - 10,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- A. CONTROLLO URL PER "APP MODE" ---
+    // Se l'URL contiene ?mode=app (es. arrivo da un progetto), salto la landing
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'app') {
+        // Eseguo l'ingresso immediato senza animazioni lente
+        const landing = document.getElementById('landing-screen');
+        if (landing) {
+            landing.style.display = 'none'; // Nascondo brutalmente subito
+            landing.classList.add('hidden');
+        }
         document.body.classList.remove('locked');
     }
-});
 
-// ... qui sotto inizia il resto del tuo codice (function enterSite, ecc.) ...
+
+    // --- B. LOGICA NAVIGAZIONE (Il codice che avevamo già) ---
+    const navLinks = document.querySelectorAll('.shortcut-card');
+    const sections = document.querySelectorAll('.category-section');
+    const navContainer = document.querySelector('.nav-buttons-container');
+
+    // Funzione per centrare orizzontalmente il pulsante attivo
+    function centerActiveBtn(activeBtn) {
+        if (!activeBtn || !navContainer) return;
+        const containerWidth = navContainer.offsetWidth;
+        const btnLeft = activeBtn.offsetLeft;
+        const btnWidth = activeBtn.offsetWidth;
+        const scrollPos = btnLeft + (btnWidth / 2) - (containerWidth / 2);
+
+        navContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
+
+    // Gestione CLICK sui pulsanti nav
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            link.classList.add('active');
+            centerActiveBtn(link);
+
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            const navHeight = document.querySelector('.nav-shortcuts')?.offsetHeight || 70;
+            
+            if (targetSection) {
+                const targetPosition = targetSection.offsetTop - navHeight - 10;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Funzione SCROLL SPY
+    function onScroll() {
+        const scrollPos = window.scrollY;
+        const navHeight = document.querySelector('.nav-shortcuts')?.offsetHeight || 70;
+        
+        // Rilevamento Fine Pagina
+        const totalHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        
+        if ((windowHeight + scrollPos) >= totalHeight - 50) {
+            navLinks.forEach(n => n.classList.remove('active'));
+            const lastLink = navLinks[navLinks.length - 1];
+            if (lastLink) {
+                lastLink.classList.add('active');
+                centerActiveBtn(lastLink);
+            }
+            return;
+        }
+
+        // Rilevamento Sezioni
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navHeight - 100; 
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                        centerActiveBtn(link);
+                    }
+                });
+            }
+        });
+    }
+
+    let isScrolling;
+    window.addEventListener('scroll', () => {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+            onScroll();
+            // Back to top logic
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (backToTopBtn) {
+                backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+            }
+        }, 10);
+    });
+
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if(backToTopBtn){
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    
+    // Init
+    onScroll();
+});
 
 
 // Funzione chiamata dai bottoni della Landing Page
@@ -60,47 +184,3 @@ function enterSite(category) {
         }
     }, 100);
 }
-
-// --- LOGICA DI NAVIGAZIONE DURANTE L'USO (Scroll Spy) ---
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.shortcut-card');
-const backToTopBtn = document.getElementById('backToTopBtn');
-
-window.addEventListener('scroll', () => {
-    // Se la copertina è ancora visibile, non fare calcoli inutili
-    if (document.body.classList.contains('locked')) return;
-
-    let current = '';
-
-    // Tasto Torna Su
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-
-    // Evidenziazione menu automatica
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= (sectionTop - 150)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Listener per i link della navbar (per navigare dopo essere entrati)
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        // Comportamento standard dello scroll smooth gestito dal CSS html {scroll-behavior: smooth}
-        // Aggiungiamo solo la classe active manuale per feedback istantaneo
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-    });
-});
