@@ -28,14 +28,14 @@
     transition: all 0.3s ease;
 }
 
-.back-link {
-    text-decoration: none;
+.back-link.icon-only {
+    padding: 8px; /* Area di tocco più comoda */
+    border-radius: 50%; /* Effetto cerchio */
+    background-color: #f4f6f8; /* Sfondo leggero */
     color: var(--primary-blue);
-    font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: opacity 0.2s;
+    justify-content: center;
 }
 .back-link:hover { opacity: 0.7; }
 
@@ -155,4 +155,63 @@
     border-color: var(--primary-blue);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 72, 131, 0.2);
+}
+
+
+/* ==========================================================================
+   MOBILE OPTIMIZATIONS per PAGINA DETTAGLIO
+   Aggiungi questo codice alla fine del file projects.css
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+    /* Contenitore principale a tutta larghezza */
+    .project-container {
+        margin: 20px auto;
+        padding: 0 15px; /* Margini laterali ridotti */
+    }
+
+    /* Navbar semplificata */
+    .project-nav {
+        padding: 10px 15px;
+        justify-content: space-between; /* Icona a sinistra, loghi a destra */
+    }
+    
+   .logo-group {
+        display: flex !important; /* Forziamo la visibilità che prima avevamo nascosto */
+        gap: 10px;
+    }
+
+    .mini-logo {
+        height: 30px; /* Un po' più piccoli su mobile */
+    }
+    /* Titolo progetto */
+    .project-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    /* VIDEO: La modifica più importante */
+    .project-hero-media {
+        height: auto; /* Altezza automatica */
+        aspect-ratio: 16 / 9; /* Mantiene sempre la proporzione widescreen */
+        margin-bottom: 20px;
+    }
+    
+    /* Contenuto testuale */
+    .project-content {
+        padding: 20px; /* Meno padding interno */
+        font-size: 1rem; /* Font base standard leggibile */
+    }
+
+    /* Box contatti */
+    .code-box {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .contact-btn {
+        width: 100%; /* Bottone a tutta larghezza */
+        justify-content: center;
+    }
 }
