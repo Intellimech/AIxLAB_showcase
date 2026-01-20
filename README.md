@@ -9,7 +9,7 @@ Benvenuti nel repository ufficiale della **Vetrina Progetti del Laboratorio di I
 
 Questo repository ospita il codice sorgente e i contenuti del sito web che raccoglie i PoC, i tutorial e i progetti di ricerca sviluppati dal laboratorio.
 
-🔗 **Sito Live:** [https://DavideCesani-IMECH.github.io/AIxLAB_showcase/](https://DavideCesani-IMECH.github.io/AIxLAB_showcase/)
+🔗 **Sito Live:** [https://intellimech.github.io/AIxLAB_showcase/](https://intellimech.github.io/AIxLAB_showcase/)
 
 ---
 
