@@ -10,7 +10,7 @@ labels:
     type: "tech"
   - text: "Analisi Dati"
     type: "domain"
-  - text: "Python, Grafana"
+  - text: "Grafana"
     type: "lib"
   - text: "Production"
     type: "type"
@@ -34,17 +34,17 @@ Gli alimentatori vengono automaticamente raggruppati in famiglie omogenee di com
 All’interno di ciascun cluster, ogni alimentatore viene monitorato rispetto al comportamento medio del gruppo mediante soglie dinamiche adattive, in grado di intercettare derive lente di processo.
 
 Le grandezze fisiche monitorate includono:
-- tensione meccanica del filo
-- velocità dell’alimentatore di trama
-- coppia del motore avvolgitrama
-- consumo di filato
-- tensione di alimentazione dell’alimentatore
+* tensione meccanica del filo
+* velocità dell’alimentatore di trama
+* coppia del motore avvolgitrama
+* consumo di filato
+* tensione di alimentazione dell’alimentatore
 
 ## Output
 Il sistema fornisce un output continuo e in tempo reale tramite dashboard interattive su Grafana, che permettono di:
-- visualizzare indicatori di anomalia per singolo alimentatore
-- confrontare il comportamento tra alimentatori appartenenti allo stesso cluster
-- analizzare trend storici e deviazioni progressive
+* visualizzare indicatori di anomalia per singolo alimentatore
+* confrontare il comportamento tra alimentatori appartenenti allo stesso cluster
+* analizzare trend storici e deviazioni progressive
 
 Le dashboard sono integrate nell’infrastruttura di fabbrica e accessibili agli operatori e alla manutenzione.
 
@@ -52,7 +52,7 @@ Le dashboard sono integrate nell’infrastruttura di fabbrica e accessibili agli
 La soluzione è attualmente in produzione in ambito industriale tessile e abilita un approccio di manutenzione predittiva basato sui dati.
 
 I principali benefici includono:
-- individuazione precoce di derive di processo
-- riduzione dei fermi macchina non pianificati
-- maggiore stabilità del processo produttivo
-- miglioramento della qualità del prodotto tessile
+* individuazione precoce di derive di processo
+* riduzione dei fermi macchina non pianificati
+* maggiore stabilità del processo produttivo
+* miglioramento della qualità del prodotto tessile
