@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rilevamento Anomalie per Alimentatori di Filo Tessile - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link icon-only" aria-label="Torna alla Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/LogoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                <span class="tag tech">Python</span>
+                
+                <span class="tag domain">Analisi Dati</span>
+                
+                <span class="tag lib">Python, Grafana</span>
+                
+                <span class="tag type">Production</span>
+                
+            </div>
+
+            <h1 class="project-title">Rilevamento Anomalie per Alimentatori di Filo Tessile</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">Sistema di anomaly detection online per manutenzione predittiva di alimentatori di filo in macchine tessili industriali.</p>
+        </header>
+
+        
+        <div class="project-hero-media">
+            
+            <video src="assets/lgl_ecoprogress.mp4" controls autoplay muted loop
+                style="width:100%; height:100%; object-fit:cover;"></video>
+            
+        </div>
+        
+
+        <article class="project-content">
+            <h2>Il Problema</h2>
+<p>Nelle macchine tessili industriali (macchine per maglieria, telai a pinza e a proiettile) operano numerosi alimentatori di filo in parallelo.</p>
+<p>Derive lente di processo, causate da usura meccanica, variazioni di filato o condizioni operative non ottimali, possono degradare la qualità del tessuto o generare fermi macchina non pianificati.<br />
+Queste anomalie sono difficili da individuare tramite semplici soglie statiche o controlli manuali.</p>
+<h2>Soluzione</h2>
+<p>È stato sviluppato un sistema di anomaly detection online basato sull’analisi continua di serie temporali provenienti dagli alimentatori di filo.</p>
+<p>Il progetto si articola in due fasi principali:</p>
+<h3>Clustering degli alimentatori</h3>
+<p>Gli alimentatori vengono automaticamente raggruppati in famiglie omogenee di comportamento tramite algoritmo DBSCAN, consentendo confronti significativi solo tra dispositivi che operano in condizioni simili.</p>
+<h3>Rilevamento delle anomalie</h3>
+<p>All’interno di ciascun cluster, ogni alimentatore viene monitorato rispetto al comportamento medio del gruppo mediante soglie dinamiche adattive, in grado di intercettare derive lente di processo.</p>
+<p>Le grandezze fisiche monitorate includono:
+- tensione meccanica del filo
+- velocità dell’alimentatore di trama
+- coppia del motore avvolgitrama
+- consumo di filato
+- tensione di alimentazione dell’alimentatore</p>
+<h2>Output</h2>
+<p>Il sistema fornisce un output continuo e in tempo reale tramite dashboard interattive su Grafana, che permettono di:
+- visualizzare indicatori di anomalia per singolo alimentatore
+- confrontare il comportamento tra alimentatori appartenenti allo stesso cluster
+- analizzare trend storici e deviazioni progressive</p>
+<p>Le dashboard sono integrate nell’infrastruttura di fabbrica e accessibili agli operatori e alla manutenzione.</p>
+<h2>Risultato</h2>
+<p>La soluzione è attualmente in produzione in ambito industriale tessile e abilita un approccio di manutenzione predittiva basato sui dati.</p>
+<p>I principali benefici includono:
+- individuazione precoce di derive di processo
+- riduzione dei fermi macchina non pianificati
+- maggiore stabilità del processo produttivo
+- miglioramento della qualità del prodotto tessile</p>
+
+            <div class="code-box">
+                <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+
+                <a href="mailto:info@intellimech.it?subject=Richiesta info: Rilevamento Anomalie per Alimentatori di Filo Tessile"
+                    class="btn-code contact-btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+
+                    Contattaci
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
