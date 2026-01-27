@@ -24,7 +24,6 @@ labels:
 ---
 
 ## Descrizione del problema
-**Introduzione**
 Questo caso d'uso, sviluppato nell'ambito del progetto europeo Horizon SM4RTENANCE, affronta l'ottimizzazione integrata di una Supply Chain composta da un'azienda produttrice e venditrice di diversi codici prodotto, dai clienti che li acquistano e da un fornitore responsabile della produzione. L'obiettivo è migliorare la pianificazione e la gestione dei flussi tra questi attori, ottimizzando tempi, costi ed efficienza complessiva della catena di fornitura.
 
 L'obbiettivo complessivo è fornire uno strumento di pianificazione che permetta di utilizzare un previsionale di ordini di acquisto da parte dei clienti per minimizzare ritardi, costi ed emissioni.
