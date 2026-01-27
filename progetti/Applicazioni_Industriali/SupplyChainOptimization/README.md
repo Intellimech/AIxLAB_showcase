@@ -1,8 +1,8 @@
 ---
 title: "Supply Chain Optimization PoC"
-summary: "PoC per sistema di ottimizzazione di una Supply Chain multi-step."
+summary: "Proof of Concept per sistema di ottimizzazione di una Supply Chain multi-step."
 img_card: "assets/SCO.png"
-# media: "assets/tuo_video.mp4"       # Percorso relativo al file video
+media: "assets/SCO.png"
 contact_email: "daniele.crippa@intellimech.it" # La mail a cui verranno inviate le richieste (se serve modificare quella di default)
 
 # Configurazione delle Etichette (Labels)
