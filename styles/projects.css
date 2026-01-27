@@ -215,3 +215,21 @@
         justify-content: center;
     }
 }
+
+
+/* ==========================================================================
+   FIX LARGHEZZA IMMAGINE 
+   ========================================================================== */
+
+
+.project-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.8rem auto; /* centra e separa dal testo */
+}
+
+/* opzionale: dimensione massima rispetto al container */
+.project-container img {
+    max-width: 100%;
+}
