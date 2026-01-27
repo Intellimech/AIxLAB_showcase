@@ -48,12 +48,12 @@ Il processo complessivo si divide in tre fasi principali: includendo i processi 
 <summary><strong>Vuoi saperne di più?</strong></summary>
 
 Qui puoi trovare riferimenti alle librerie Python Open Source utilizzate e agli algoritmi implementati:
-- Ottimizzazione multi-obiettivo: [pymoo](https://pymoo.org/).
-- Algoritmo genetico: [NSGA-II](https://ieeexplore.ieee.org/document/996017)
-- Scelta delle soluzioni: [Pseudo-Weights](https://pymoo.org/getting_started/part_3.html)
-- Simulazione a eventi discreti e gestione risorse: [SimPy](https://simpy.readthedocs.io/en/latest/).
-- Strutture dati: [Pandas](https://pandas.pydata.org/).
-- Plotting e visualizzazione: [matplotlib](https://matplotlib.org/).
+* Ottimizzazione multi-obiettivo: [pymoo](https://pymoo.org/).
+* Algoritmo genetico: [NSGA-II](https://ieeexplore.ieee.org/document/996017)
+* Scelta delle soluzioni: [Pseudo-Weights](https://pymoo.org/getting_started/part_3.html)
+* Simulazione a eventi discreti e gestione risorse: [SimPy](https://simpy.readthedocs.io/en/latest/).
+* Strutture dati: [Pandas](https://pandas.pydata.org/).
+* Plotting e visualizzazione: [matplotlib](https://matplotlib.org/).
 
 <!-- [Contattaci](mailto:daniele.crippa@intellimech.it?subject=Info_Use_Case_SCO) per altri dettagli! -->
 
