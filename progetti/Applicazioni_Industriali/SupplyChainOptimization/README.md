@@ -41,7 +41,7 @@ Il processo complessivo si divide in tre fasi principali: includendo i processi 
 </ul>
 
 <h2>Soluzione</h2>
-<p><strong>Introduzione:</strong> La soluzione è suddivisa in tre step sequenziali integrati, ognuno con modelli specifici che interagiscono tramite output strutturati.</p>
+<p>La soluzione è suddivisa in tre step sequenziali integrati, ognuno con modelli specifici che interagiscono tramite output strutturati.</p>
 <ul>
   <li><strong>Step 1 — Delivery Optimization:</strong> ottimizza mezzo e timing delle consegne ai clienti da parte dell'azinda per ogni ordine, bilanciando latenze, costi ed emissioni. Utilizza un algoritmo genetico (NSGA-II) per l'ottimizzazione multi-obbiettivo, tenendo conto delle riduzioni di costo e consumo complessivo per spedizioni che aggregano ordini diversi spediti allo stesso paese. Le soluzioni sub-ottimali sono scelte tramite psudo-pesi.</li>
   <li><strong>Step 2 — Supply Optimization:</strong> pianifica anticipo e arrivi fornitori per ridurre numero di trasporti e costi di magazzino interni all'azienda. Anche in questo caso, si impiega un algoritmo genetico per l'ottimizzazione, tenendo conto delle riduzioni di costo per trasporti aggregati.</li>
