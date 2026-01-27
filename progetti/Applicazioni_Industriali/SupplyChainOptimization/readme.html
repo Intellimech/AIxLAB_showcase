@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Optimization PoC - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link icon-only" aria-label="Torna alla Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/LogoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                <span class="tag domain">Supply Chain</span>
+                
+                <span class="tag domain">Process Optimization</span>
+                
+                <span class="tag lib">Pandas</span>
+                
+                <span class="tag lib">pymoo</span>
+                
+                <span class="tag lib">SimPy</span>
+                
+                <span class="tag tech">Python</span>
+                
+                <span class="tag type">PoC</span>
+                
+            </div>
+
+            <h1 class="project-title">Supply Chain Optimization PoC</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">PoC per sistema di ottimizzazione di una Supply Chain multi-step.</p>
+        </header>
+
+        
+
+        <article class="project-content">
+            <h2>Descrizione del problema</h2>
+<p><strong>Introduzione</strong>
+Sviluppato nel contesto del progetto EU SM4RTENANCE, questo caso d'uso affronta l'ottimizzazione integrata di una Supply Chain, costituita da un'azienda che vende un prodotto (vari codici), dai suoi clienti che lo acquistano e da un fornitore che produce il prodotto.</p>
+<p>L'obbiettivo complessivo è fornire uno strumento di pianificazione che permetta di utilizzare un previsionale di ordini di acquisto da parte dei clienti per minimizzare ritardi, costi ed emissioni.</p>
+<p>Il previsionale è costituito da un elenco di ordini associati a identificativo del cliente, nazione per la spedizione, codice prodotto richiesto, quantità, data prevista per l'ordine e deadline per la consegna stabilita secondo le policy aziendali.</p>
+<p>Partendo dal vincolo principale del problema, ovvero il soddisfacimento dei termini di consegna al cliente, il flusso di ottimizzazione si sviluppa all'indietro fino alla produzione dei codici prodotto stessi.</p>
+<p>Il processo complessivo si divide in tre fasi principali: includendo i processi di consegna, approvvigionamento e produzione,
+- <strong>"Delivery":</strong> consegna da parte dell'azienda al cliente.
+- <strong>"Supply":</strong> approvvigionamento dei prodotti dal fornitore all'azienda.
+- <strong>"Production":</strong> produzione interna del fornitore. Si considerano le richieste da parte dell'azienda e altre richieste nello stesso periodo provenienti da altri potenziali clienti del fornitore.</p>
+<h2>Soluzione</h2>
+<p><strong>Introduzione:</strong> La soluzione è suddivisa in tre step sequenziali integrati, ognuno con modelli specifici che interagiscono tramite output strutturati.
+- <strong>Step 1 — Delivery Optimization:</strong> ottimizza mezzo e timing delle consegne ai clienti da parte dell'azinda per ogni ordine, bilanciando latenze, costi ed emissioni. Utilizza un algoritmo genetico (NSGA-II) per l'ottimizzazione multi-obbiettivo, tenendo conto delle riduzioni di costo e consumo complessivo per spedizioni che aggregano ordini diversi spediti allo stesso paese. Le soluzioni sub-ottimali sono scelte tramite psudo-pesi.
+- <strong>Step 2 — Supply Optimization:</strong> pianifica anticipo e arrivi fornitori per ridurre numero di trasporti e costi di magazzino interni all'azienda. Anche in questo caso, si impiega un algoritmo genetico per l'ottimizzazione, tenendo conto delle riduzioni di costo per trasporti aggregati.
+- <strong>Step 3 — Production Simulation &amp; Scheduling:</strong> simula la linea produttiva e la allinea con i valori a stock per evadere ordini nei tempi stabiliti. Il processo produttivo simulato è quello di tre linee produttive parallele, che producono rispettivamente il materiale base ("Plates"), il semilavorato ("Strips") e i codici prodotto finali ("Tapes"). Utilizza una simulazione a eventi discreti (DES) che permette di tenere conto dei vincoli produttivi (es. disponibilità delle macchine, turni di lavoro) e di magazzino (es. quantità minime e capienza per ogni possibile codice prodotto). A differenza dei primi due step, ragiona su una scala temporale oraria, anzi che giornaliera.</p>
+<details>
+<summary><strong>Vuoi saperne di più?</strong></summary>
+
+Qui puoi trovare riferimenti alle librerie Python Open Source utilizzate e agli algoritmi implementati:
+- Ottimizzazione multi-obiettivo: [pymoo](https://pymoo.org/).
+- Algoritmo genetico: [NSGA-II](https://ieeexplore.ieee.org/document/996017)
+- Scelta delle soluzioni: [Pseudo-Weights](https://pymoo.org/getting_started/part_3.html)
+- Simulazione a eventi discreti e gestione risorse: [SimPy](https://simpy.readthedocs.io/en/latest/).
+- Strutture dati: [Pandas](https://pandas.pydata.org/).
+- Plotting e visualizzazione: [matplotlib](https://matplotlib.org/).
+
+<!-- [Contattaci](mailto:daniele.crippa@intellimech.it?subject=Info_Use_Case_SCO) per altri dettagli! -->
+
+</details>
+
+<h2>Risultati</h2>
+<p>Il modello sviluppato permette di ottenere degli schedule specifici per le tre fasi della Supply Chain considerate. Ciò si traduce in tabelle contenenti le date di inizio e fine delle spedizioni e dei trasporti associati a ogni ordine e un file JSON contenente i timestamp di inizio produzione per ogni possibile semilavorato e prodotto finale.</p>
+<p>Nella figura seguente si può verificare il risultato dell'ottimizzazione per i processi di Delivery e Supply. Si nota come gli ottimizzatori tendano ad accorpare spedizioni relative a clienti della stessa nazione o trasporti vicini nel tempo.</p>
+<p><img alt="Delivery-Supply Schedule" src="assets/del_sup_schedule.png" /></p>
+<p>Di seguito invece si riporta l'andamento del livello a magazzino dei diversi codici prodotto, che evidenzia le evasioni relative agli ordini considerati e il rispetto dei vincoli di magazzino.</p>
+<p><img alt="Stock check" src="assets/prod_stock.png" /></p>
+
+            <div class="code-box">
+                <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+
+                <a href="mailto:info@intellimech.it?subject=Richiesta info: Supply Chain Optimization PoC"
+                    class="btn-code contact-btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+
+                    Contattaci
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
