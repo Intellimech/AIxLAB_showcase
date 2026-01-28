@@ -40,8 +40,6 @@ Le grandezze fisiche monitorate includono:
 * consumo di filato
 * tensione di alimentazione dell’alimentatore
 
-
-
 ## Risultato
 La soluzione è attualmente in produzione in ambito industriale tessile e abilita un approccio di manutenzione predittiva basato sui dati.
 
