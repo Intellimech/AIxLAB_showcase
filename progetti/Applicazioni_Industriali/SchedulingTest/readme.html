@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedulazione di test chimici - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link icon-only" aria-label="Torna alla Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/LogoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                <span class="tag domain">Reinforcement Learning</span>
+                
+                <span class="tag domain">Scheduling</span>
+                
+                <span class="tag tech">PPO</span>
+                
+                <span class="tag lib">stable-baselines3</span>
+                
+                <span class="tag lib">RLlib</span>
+                
+                <span class="tag type">PoC</span>
+                
+            </div>
+
+            <h1 class="project-title">Schedulazione di test chimici</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">Sistema ibrido NeuroSymbolic AI e Reinforcement Learning per l'ottimizzazione della schedulazione di test chimici, focalizzato su minimizzazione dei tempi interpretabile con Explainable AI.</p>
+        </header>
+
+        
+        <div class="project-hero-media">
+            
+            <img src="assets/progetto.png" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
+            
+        </div>
+        
+
+        <article class="project-content">
+            <h2>Il Problema</h2>
+<p>Il progetto affronta la sfida della schedulazione di <strong>test chimici</strong> per lotti di produzione. L'obiettivo principale è ottimizzare la sequenza dei test per ogni lotto al fine di <strong>minimizzarne la durata complessiva</strong>, garantendo al contempo il rigoroso rispetto di <strong>vincoli di processo e temporali</strong> (scadenze dei lotti). Oltre all'efficienza temporale, il problema richiede la capacità di <strong>estrarre informazioni</strong> utili per spiegare e giustificare la soluzione ottenuta agli operatori umani.</p>
+<h2>La Soluzione</h2>
+<p>L'approccio proposto si basa su un'architettura ibrida che integra <strong>NeuroSymbolic AI</strong> e <strong>Reinforcement Learning</strong>. Il sistema elabora un elenco di test da eseguire e genera una schedulazione ottimizzata. Un ulteriore componente fondamentale è l'<strong>Explainable AI</strong>, introdotta per rendere trasparente il processo decisionale dell'algoritmo generando diagrammi di Gantt della soluzione ottimizzata ed heat-map che permettono di avere sotto controllo il carico delle macchine.</p>
+<details>
+<summary><strong>Approfondimento tecnico</strong></summary>
+<ul>
+  <li>🚀 <strong>Panoramica</strong>: Il problema viene modellato come Flexible Job‑Shop Scheduling Problem (FJSSP).</li>
+  <li>🧩 <strong>Ambiente (<code>FJSSPEnv</code>)</strong>: ambiente Gym‑compatibile, altamente configurabile (job, task, macchine, durate e variabilità degli interventi umani) per simulare scenari di diversa complessità.</li>
+  <li>🤖 <strong>Agent & Algoritmi</strong>: implementazioni di riferimento per <strong>PPO</strong> (stable‑baselines3) e esperimenti comparativi con <strong>RLlib</strong> per benchmarking.</li>
+</ul>
+</details>
+
+<h2>Risultati</h2>
+<p>Il PoC ha prodotto risultati incoraggianti: nelle istanze di test gli agenti hanno mostrato riduzioni del makespan e un migliore utilizzo delle risorse rispetto a politiche casuali e greedy, spingendo a proseguire nello sviluppo e nell'affinamento degli agenti.</p>
+
+            <div class="code-box">
+                <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+
+                <a href="mailto:info@intellimech.it?subject=Richiesta info: Schedulazione di test chimici"
+                    class="btn-code contact-btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+
+                    Contattaci
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente AI per compilazione relazione CdA - AI Lab</title>
+    <link rel="stylesheet" href="../../../styles/global.css">
+    <link rel="stylesheet" href="../../../styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="project-nav">
+        <a href="../../../index.html?mode=app" class="back-link icon-only" aria-label="Torna alla Home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </a>
+        <div class="logo-group">
+            <img src="../../../img/LogoIMECH.png" alt="Intellimech" class="mini-logo">
+            <div class="mini-divider"></div>
+            <img src="../../../img/LogoAIxLAB.png" alt="AIxLAB" class="mini-logo">
+        </div>
+    </nav>
+
+    <div class="project-container">
+
+        <header class="project-header">
+            <div class="labels" style="justify-content: center; margin-bottom: 15px;">
+                
+                <span class="tag domain">GenAI</span>
+                
+                <span class="tag domain">Agentic AI</span>
+                
+                <span class="tag tech">RAG</span>
+                
+                <span class="tag lib">LangGraph</span>
+                
+                <span class="tag lib">LlamaIndex</span>
+                
+                <span class="tag type">PoC</span>
+                
+            </div>
+
+            <h1 class="project-title">Assistente AI per compilazione relazione CdA</h1>
+            <p class="subtitle" style="color:#666; font-size:1.2rem;">Sistema RAG Agentico per il supporto alla segreteria del Consiglio di Amministrazione: analisi documenti, dati Excel e ricerche web.</p>
+        </header>
+
+        
+        <div class="project-hero-media">
+            
+            <img src="assets/assistente_cda_project.png" alt="Hero Media" style="width:100%; height:100%; object-fit:contain;">
+            
+        </div>
+        
+
+        <article class="project-content">
+            <h2>Il Problema</h2>
+<p>La segreteria del Consiglio di Amministrazione deve gestire una grande mole di informazioni eterogenee: verbali storici in PDF, registri delle presenze in Excel e notizie finanziarie dal web. Recuperare rapidamente un dato specifico (es. "Chi era presente alla riunione del...?" o "Cosa è stato deciso riguardo a...?") richiede tempo e precisione, spesso rallentando i processi decisionali.</p>
+<h2>La Soluzione</h2>
+<p>Abbiamo sviluppato un <strong>Assistente AI Agentico</strong> integrato in Microsoft Teams che supporta la segreteria in tempo reale.
+A differenza di una chat classica, questo sistema "ragiona" sulla richiesta dell'utente e attiva lo strumento più adatto: consulta l'archivio documenti per informazioni qualitative, elabora i file Excel per statistiche e presenze, o naviga sul web per dati di borsa aggiornati.</p>
+<details>
+<summary><strong>🛠️ Esplora l'Architettura Tecnica</strong></summary>
+
+<p>Il sistema è basato su un'architettura a microservizi all'avanguardia:</p>
+<ul>
+<li>⚡ <strong>Backend:</strong> Potente API in Python con <strong>FastAPI</strong>.</li>
+<li>🧠 <strong>Cervello Agente:</strong> Orchestrazione decisionale tramite <strong>LangGraph</strong>.</li>
+<li>📚 <strong>RAG Evoluto:</strong> Ricerca semantica su documenti non strutturati con <strong>LlamaIndex</strong> e <strong>ChromaDB</strong>.</li>
+<li>📊 <strong>Analisi Dati:</strong> Agente Pandas (crea ed esegue codice Python sicuro) autonomo per l'estrazione di insight da file Excel.</li>
+<li>🌐 <strong>Live Web Search:</strong> Accesso a dati in tempo reale dal web.</li>
+<li>🔒 <strong>Sicurezza:</strong> Backend privato per la gestione dei dati.</li>
+</ul>
+</details>
+
+<h2>Risultati</h2>
+<p>Il sistema permette di interrogare lo storico aziendale in linguaggio naturale, riducendo i tempi di ricerca. Garantisce risposte basate su dati reali (citando sempre la fonte, sia essa un PDF, una riga Excel o un sito web) e mantiene la riservatezza dei dati operando su un backend privato.
+Trattandosi di un <strong>Proof of Concept (PoC)</strong>, è attualmente in fase di valutazione la scalatura dell'intera architettura verso <strong>Microsoft Azure</strong>.</p>
+
+            <div class="code-box">
+                <p>Ti interessa questa tecnologia e vuoi applicarla nella tua azienda?</p>
+
+                <a href="mailto:info@intellimech.it?subject=Richiesta info: Assistente AI per compilazione relazione CdA"
+                    class="btn-code contact-btn">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+
+                    Contattaci
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </a>
+    <script>
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+            else backToTopBtn.classList.remove('visible');
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
