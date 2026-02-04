@@ -5,111 +5,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generazione Automatica di Codice Software - AI Lab Blog</title>
-    <link rel="stylesheet" href="../../styles/global.css">
-    <link rel="stylesheet" href="../../styles/projects.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Specific overrides for blog template */
-        .blog-header {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-            background: rgba(255, 255, 255, 0.95);
+        /* --- RESET E BASE --- */
+        :root {
+            --brand-blue: #004883;
+            --brand-light: #0069bf;
+            --accent-red: #d32f2f;
+            --text-dark: #1a1a1a;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* --- 1. NAVBAR STICKY BIANCA --- */
+        .blog-navbar {
+            background-color: rgba(255, 255, 255, 0.98);
             border-bottom: 1px solid #e0e0e0;
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
-
-        .blog-logo {
-            height: 50px;
-            width: auto;
-        }
-
-        .pdf-download-container {
-            text-align: center;
-            margin-top: 40px;
-            padding: 30px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
-        }
-
-        .pdf-btn {
-            background-color: #d32f2f;
-            /* Red for PDF/Adobe usually */
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
+            height: 80px;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 12px;
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(8px); /* Effetto vetro su iPhone */
         }
 
-        .pdf-btn:hover {
-            background-color: #b71c1c;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+        .nav-logo {
+            height: 50px; /* Altezza logo su Desktop */
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* --- 2. HERO SECTION (Titolo e Data) --- */
+        .article-hero {
+            background: linear-gradient(135deg, var(--brand-blue) 0%, #002a4d 100%);
             color: white;
+            /* Padding ridotto sopra perché c'è già la navbar bianca */
+            padding: 80px 20px 140px 20px; 
+            text-align: center;
+            position: relative;
+        }
+
+        /* Pattern decorativo sottile */
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .article-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .article-meta {
+            font-family: 'Inter', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- 3. CONTENITORE PRINCIPALE (Card Flottante) --- */
+        .content-wrapper {
+            max-width: 740px;
+            margin: -100px auto 60px auto; /* Sale sopra la Hero */
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- TIPOGRAFIA --- */
+        .blog-content { font-size: 1.15rem; color: #333; }
+        .blog-content p { margin-bottom: 1.5em; }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            color: var(--brand-blue);
+            margin-top: 2.5em;
+            margin-bottom: 0.8em;
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+            line-height: 1.3;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 2em;
+            color: #444;
+        }
+
+        /* --- ELEMENTI SMART (Citazioni e Numeri) --- */
+        .smart-quote {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--brand-blue);
+            background-color: #f0f7ff;
+            padding: 25px 30px;
+            border-radius: 0 12px 12px 0;
+            border-left: 6px solid var(--brand-blue);
+            margin: 40px -30px;
+            position: relative;
+        }
+        .smart-quote::before {
+            content: '“';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px; left: 10px;
+            opacity: 0.1; color: var(--brand-blue);
+        }
+
+        .highlight-number { font-weight: 800; color: var(--accent-red); }
+
+        .blog-content img {
+            max-width: 100%; height: auto;
+            border-radius: 8px; margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* --- FOOTER CTA --- */
+        .footer-cta {
+            margin-top: 60px; padding-top: 40px;
+            border-top: 2px dashed #eee; text-align: center;
+        }
+
+        .btn-pdf {
+            background-color: var(--accent-red); color: white;
+            padding: 16px 35px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; font-size: 1.1rem;
+            display: inline-flex; align-items: center; gap: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+        .btn-pdf:hover {
+            transform: translateY(-3px); background-color: #b71c1c;
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+        }
+
+        /* --- BACK TO TOP BUTTON --- */
+        .back-to-top {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background-color: var(--brand-blue); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            z-index: 2000; opacity: 0; pointer-events: none;
+            transform: translateY(20px); transition: all 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .back-to-top:hover { transform: translateY(-5px); background-color: var(--brand-light); }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .blog-navbar { height: 60px; } /* Navbar più sottile su mobile */
+            .nav-logo { height: 35px; } /* Logo più piccolo */
+            
+            .article-hero { padding: 40px 20px 80px 20px; }
+            .article-title { font-size: 2rem; }
+            
+            .content-wrapper { 
+                padding: 30px 20px; 
+                margin-top: -50px; /* Sale meno */
+                border-radius: 20px 20px 0 0; 
+                box-shadow: none; /* Meno pesante su mobile */
+            }
+            
+            .smart-quote { margin: 30px 0; padding: 20px; font-size: 1.1rem; }
+            
+            .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
 
 <body>
 
-    <header class="blog-header">
-        <img src="../../img/LogoIMECH.png" alt="Intellimech" class="blog-logo">
+    <nav class="blog-navbar">
+        <img src="../../img/LogoIMECH.png" alt="Intellimech" class="nav-logo">
+    </nav>
+
+    <header class="article-hero">
+        <div class="hero-content">
+            <h1 class="article-title">Generazione Automatica di Codice Software</h1>
+            
+            <div class="article-meta">Pomeriggio Intellimech – Fassi S.p.A. – 27 febbraio 2026</div>
+            
+        </div>
     </header>
 
-    <div class="project-container">
+    <main class="content-wrapper">
+        <div class="blog-content" id="blogText">
+            <p>Oltre 300 professionisti si sono riuniti presso Fassi S.p.A. per il Pomeriggio Intellimech riguardante la &quot;Generazione Automatica di Codice Software&quot;, una giornata dedicata all'esplorazione dell'AI applicata allo sviluppo. Aziende italiane e internazionali hanno condiviso esperienze concrete di adozione, dimostrando che la tecnologia è passata dalla fase sperimentale all'applicazione produttiva.</p><h2>I Casi d'Uso</h2><h3>TechVision S.p.A. - Migrazione Legacy</h3><p>Marco Ferretti, CTO di TechVision, ha presentato la migrazione di un sistema bancario da COBOL a Java Spring Boot e ha dichiarato </p><p>&quot;Abbiamo ridotto i tempi del 60% e migliorato la qualità complessiva”.</p><p> L'AI non solo ha tradotto il codice, ma ha suggerito pattern moderni riducendo i bug del 40% rispetto al metodo tradizionale su 450000 linee migrate.</p><h3>DataFlow Solutions - Test Automation</h3><p>Elena Rossi di DataFlow Solutions ha illustrato come l'azienda abbia automatizzato la creazione di test su una codebase di 2 milioni di linee.</p><p> &quot;Il vantaggio non è solo la velocità, ma la capacità dell'AI di identificare edge cases che sfuggono all'attenzione umana&quot;</p><p>ha spiegato Rossi. La code coverage è passata dal 45% all'82% in tre mesi, con un sistema di revisione continua che mantiene alta la qualità.</p><h3>FinTech Innovators - Refactoring Intelligente</h3><p>Alessandra Conti, Senior Architect di FinTech Innovators, ha condiviso l'esperienza di refactoring di una piattaforma di trading ad alta frequenza. L'AI ha analizzato pattern duplicati e suggerito ottimizzazioni che hanno migliorato le performance del 25%-30%, identificando al contempo vulnerabilità di sicurezza durante il processo.</p><h2>Editoriale: Il Futuro dello Sviluppo Software</h2><p><em>A cura di Consorzio Intellimech</em></p><p>I casi presentati dimostrano che l'AI code generation è ormai una realtà produttiva. Come ha affermato Satya Nadella:</p><p> &quot;L'AI non sostituirà i programmatori, ma i programmatori che usano l'AI sostituiranno quelli che non lo fanno.&quot; </p><p>La domanda non è più <em>se</em> adottare, ma <em>come</em> farlo efficacemente.</p><h3>Il Nuovo Ruolo dello Sviluppatore</h3><p>Gli sviluppatori non stanno diventando obsoleti, ma si stanno evolvendo in ruoli più strategici: architetti di soluzioni, revisori critici, designer di prompt. Jensen Huang di NVIDIA ha osservato che &quot;l'AI sta democratizzando la programmazione, ma la vera maestria rimane un'arte umana.&quot; La capacità di comprendere i problemi di business e tradurli in specifiche precise diventa ancora più cruciale.</p><h3>Le Sfide: Qualità e Sicurezza</h3><p>I relatori hanno sottolineato l'importanza di processi robusti di code review. L'AI può accelerare la produzione, ma può anche amplificare pattern problematici senza adeguata supervisione. Alcune aziende hanno riportato un iniziale aumento del technical debt, evidenziando la necessità di guardrail appropriati.</p><p>Sul fronte sicurezza, Sam Altman di OpenAI ha dichiarato: &quot;La trasparenza sui dati di training e le garanzie sulla proprietà del codice generato saranno fondamentali per l'adozione enterprise.&quot; Diverse aziende hanno implementato soluzioni on-premise o modelli open-source addestrati su dataset interni per mantenere il controllo.</p><h3>Prospettive</h3><p>Secondo Gartner, entro il 2027 il 75% delle aziende software utilizzerà AI code generation in produzione. Le testimonianze raccolte suggeriscono che questa previsione potrebbe essere conservativa. Bill Gates ha commentato: &quot;Stiamo entrando in un'era dove l'AI diventerà il co-pilota di ogni sviluppatore, rendendo la programmazione più accessibile e potente.&quot;</p><p>Le prossime frontiere includono l'integrazione con DevOps, la generazione di infrastructure-as-code, e sistemi che comprendono l'intero ciclo di vita del software. Tuttavia, come ha evidenziato Demis Hassabis di Google DeepMind: &quot;Il futuro non è l'automazione completa, ma la collaborazione uomo-macchina.&quot;</p><h2>Conclusioni</h2><p>L'evento ha evidenziato una verità fondamentale: siamo all'alba di una trasformazione profonda. Le aziende che sapranno bilanciare innovazione e governance, automazione e supervisione umana, velocità e qualità, saranno meglio posizionate per competere nel mercato digitale.</p><p>Come ha detto un partecipante: &quot;L'AI code generation non è la fine della programmazione, è l'inizio di un nuovo capitolo dove gli sviluppatori possono finalmente concentrarsi su ciò che conta: risolvere problemi complessi e creare valore.&quot;</p><p><em>“Il futuro dello sviluppo software appare non solo automatizzato, ma anche più umano, più creativo e più impattante.”</em></p><p>_______________</p><p><em>Consorzio Intellimech</em></p>
+        </div>
 
-        <header class="project-header">
-            <h1 class="project-title">Generazione Automatica di Codice Software</h1>
-        </header>
-
-        <article class="project-content">
-            <p><em>Pomeriggio Intellimech  - 27 febbraio 2026</em></p><p>Oltre 300 professionisti si sono riuniti presso Fassi S.p.A. per il pomeriggio intellimech riguardante la &quot;Generazione Automatica di Codice Software&quot;, una giornata dedicata all'esplorazione dell'AI applicata allo sviluppo. Aziende italiane e internazionali hanno condiviso esperienze concrete di adozione, dimostrando che la tecnologia è passata dalla fase sperimentale all'applicazione produttiva.</p><h2>I Casi d'Uso</h2><h3>TechVision S.p.A. - Migrazione Legacy</h3><p>Marco Ferretti, CTO di TechVision, ha presentato la migrazione di un sistema bancario da COBOL a Java Spring Boot. &quot;Abbiamo ridotto i tempi del 60% e migliorato la qualità complessiva&quot;, ha dichiarato. L'AI non solo ha tradotto il codice, ma ha suggerito pattern moderni riducendo i bug del 40% rispetto al metodo tradizionale su 450.000 linee migrate.</p><h3>DataFlow Solutions - Test Automation</h3><p>Elena Rossi di DataFlow Solutions ha illustrato come l'azienda abbia automatizzato la creazione di test su una codebase di 2 milioni di linee. &quot;Il vantaggio non è solo la velocità, ma la capacità dell'AI di identificare edge cases che sfuggono all'attenzione umana&quot;, ha spiegato Rossi. La code coverage è passata dal 45% all'82% in tre mesi, con un sistema di revisione continua che mantiene alta la qualità.</p><h3>FinTech Innovators - Refactoring Intelligente</h3><p>Alessandra Conti, Senior Architect di FinTech Innovators, ha condiviso l'esperienza di refactoring di una piattaforma di trading ad alta frequenza. L'AI ha analizzato pattern duplicati e suggerito ottimizzazioni che hanno migliorato le performance del 25-30%, identificando al contempo vulnerabilità di sicurezza durante il processo.</p><h2>Editoriale: Il Futuro dello Sviluppo Software</h2><p><em>A cura di Consorzio Intellimech</em></p><p>I casi presentati dimostrano che l'AI code generation è ormai una realtà produttiva. Come ha affermato Satya Nadella: &quot;L'AI non sostituirà i programmatori, ma i programmatori che usano l'AI sostituiranno quelli che non lo fanno.&quot; La domanda non è più <em>se</em> adottare, ma <em>come</em> farlo efficacemente.</p><h3>Il Nuovo Ruolo dello Sviluppatore</h3><p>Gli sviluppatori non stanno diventando obsoleti, ma si stanno evolvendo in ruoli più strategici: architetti di soluzioni, revisori critici, designer di prompt. Jensen Huang di NVIDIA ha osservato che &quot;l'AI sta democratizzando la programmazione, ma la vera maestria rimane un'arte umana.&quot; La capacità di comprendere i problemi di business e tradurli in specifiche precise diventa ancora più cruciale.</p><h3>Le Sfide: Qualità e Sicurezza</h3><p>I relatori hanno sottolineato l'importanza di processi robusti di code review. L'AI può accelerare la produzione, ma può anche amplificare pattern problematici senza adeguata supervisione. Alcune aziende hanno riportato un iniziale aumento del technical debt, evidenziando la necessità di guardrail appropriati.</p><p>Sul fronte sicurezza, Sam Altman di OpenAI ha dichiarato: &quot;La trasparenza sui dati di training e le garanzie sulla proprietà del codice generato saranno fondamentali per l'adozione enterprise.&quot; Diverse aziende hanno implementato soluzioni on-premise o modelli open-source addestrati su dataset interni per mantenere il controllo.</p><h3>Prospettive</h3><p>Secondo Gartner, entro il 2027 il 75% delle aziende software utilizzerà AI code generation in produzione. Le testimonianze raccolte suggeriscono che questa previsione potrebbe essere conservativa. Bill Gates ha commentato: &quot;Stiamo entrando in un'era dove l'AI diventerà il co-pilota di ogni sviluppatore, rendendo la programmazione più accessibile e potente.&quot;</p><p>Le prossime frontiere includono l'integrazione con DevOps, la generazione di infrastructure-as-code, e sistemi che comprendono l'intero ciclo di vita del software. Tuttavia, come ha evidenziato Demis Hassabis di Google DeepMind: &quot;Il futuro non è l'automazione completa, ma la collaborazione uomo-macchina.&quot;</p><h2>Conclusioni</h2><p>L'evento ha evidenziato una verità fondamentale: siamo all'alba di una trasformazione profonda. Le aziende che sapranno bilanciare innovazione e governance, automazione e supervisione umana, velocità e qualità, saranno meglio posizionate per competere nel mercato digitale.</p><p>Come ha detto un partecipante: &quot;L'AI code generation non è la fine della programmazione, è l'inizio di un nuovo capitolo dove gli sviluppatori possono finalmente concentrarsi su ciò che conta: risolvere problemi complessi e creare valore.&quot;</p><p><em>Il futuro dello sviluppo software appare non solo automatizzato, ma anche più umano, più creativo e più impattante.</em></p><p>_______________</p><p><em>Consorzio Intellimech</em></p>
-        </article>
-
-        <div class="pdf-download-container">
-            <p>Vuoi leggere questo articolo offline?</p>
+        <div class="footer-cta">
+            <p style="color:#888; margin-bottom: 20px; font-style: italic;">Salva l'articolo per non perderlo</p>
             
-            <a href="Generazione_Automatica_Codice_Software.pdf" class="pdf-btn" download>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Scarica la versione PDF
+            <a href="Generazione_Automatica_Codice_Software.pdf" class="btn-pdf" download>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                Scarica Versione PDF
             </a>
             
         </div>
-
-    </div>
+    </main>
 
     <a href="#" class="back-to-top" id="backToTopBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>
         </svg>
     </a>
+
     <script>
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) backToTopBtn.classList.add('visible');
-            else backToTopBtn.classList.remove('visible');
-        });
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.addEventListener("DOMContentLoaded", function() {
+            // --- LOGICA FORMATTAZIONE SMART ---
+            const container = document.getElementById('blogText');
+            if(container) {
+                const paragraphs = container.getElementsByTagName('p');
+                for (let p of paragraphs) {
+                    let text = p.textContent.trim();
+                    // Citazioni
+                    if (text.startsWith('"') || text.startsWith('“') || text.startsWith('«')) {
+                        p.classList.add('smart-quote');
+                    }
+                    // Numeri
+                    p.innerHTML = p.innerHTML.replace(
+                        /(\d{1,3}(?:\.\d{3})*(?:,\d+)?%|\b\d{1,3}(?:\.\d{3})+\b)/g, 
+                        '<span class="highlight-number">$1</span>'
+                    );
+                }
+            }
+
+            // --- LOGICA BACK TO TOP ---
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if(backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+                    else backToTopBtn.classList.remove('visible');
+                });
+                backToTopBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
-</body>
 
+</body>
 </html>
